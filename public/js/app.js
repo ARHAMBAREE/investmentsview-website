@@ -1577,3 +1577,38 @@ function showToast(message) {
 }
 
 window.showToast = showToast;
+
+/**
+ * Universal Clipboard Copy Helper
+ */
+function copyText(text, btn) {
+  if (!text) return;
+  try {
+    navigator.clipboard.writeText(text);
+  } catch (err) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+
+  if (btn) {
+    const originalText = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.style.color = '#22c55e';
+    btn.style.borderColor = '#22c55e';
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
+  }
+
+  if (typeof showToast === 'function') {
+    showToast(`Copied to clipboard: ${text}`);
+  }
+}
+
+window.copyText = copyText;

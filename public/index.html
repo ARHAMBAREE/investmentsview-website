@@ -1907,12 +1907,59 @@
 
               <!-- Payment Pane 3: SEPA Instant -->
               <div id="pane-sepa" class="pay-pane">
-                <div class="alt-pay-box">
-                  <strong>SEPA Instant Bank Transfer (EUR)</strong><br>
-                  Dedicated to European &amp; German clients of <strong>investmentsview.de</strong>.<br>
-                  IBAN: <code>DE89 5001 0517 5408 2931 00</code><br>
-                  BIC: <code>MARKDEF1FRA</code> &bull; Bank: Frankfurt Trade Bank AG<br>
-                  Reference: <code>VRUNNER-<span id="sepa-ref-code">88F2</span></code> (License key auto-dispatched upon reception).
+                <div class="alt-pay-box" style="padding: 18px 20px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px;">
+                    <div>
+                      <strong style="color: #ffffff; font-size: 14.5px;">SEPA Instant Bank Transfer (EUR)</strong>
+                      <div style="font-size: 11.5px; color: #94a3b8; margin-top: 2px;">Official German Merchant Account &bull; <strong>investmentsview.de</strong></div>
+                    </div>
+                    <span style="font-size: 10.5px; font-weight: 700; color: #22c55e; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; padding: 3px 8px;">
+                      ● 0% Transfer Fee
+                    </span>
+                  </div>
+
+                  <!-- Details Grid -->
+                  <div style="display: grid; gap: 10px; font-size: 13px;">
+                    <!-- Beneficiary -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(18, 21, 36, 0.6); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                      <span style="color: #94a3b8; font-size: 12px;">Beneficiary / Account Holder:</span>
+                      <strong style="color: #ffffff; font-family: var(--font-mono); letter-spacing: 0.5px;">ABDUL KHALIQUE</strong>
+                    </div>
+
+                    <!-- Bank Name -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(18, 21, 36, 0.6); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                      <span style="color: #94a3b8; font-size: 12px;">Bank Name:</span>
+                      <strong style="color: #f1f5f9;">DEUTSCHE BANK OFFENBACH</strong>
+                    </div>
+
+                    <!-- IBAN with Copy -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(18, 21, 36, 0.8); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(200, 150, 88, 0.35);">
+                      <div>
+                        <span style="color: #c89658; font-size: 11px; font-weight: 700; text-transform: uppercase; display: block;">IBAN (EUR):</span>
+                        <code style="color: #fef08a; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.5px;" id="sepa-iban-val">DE27 5057 0024 00730101 00</code>
+                      </div>
+                      <button type="button" class="btn-copy-address" style="cursor: pointer;" onclick="copyText('DE27 5057 0024 00730101 00', this)">Copy IBAN</button>
+                    </div>
+
+                    <!-- BIC / SWIFT with Copy -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(18, 21, 36, 0.8); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.08);">
+                      <div>
+                        <span style="color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase; display: block;">BIC / SWIFT:</span>
+                        <code style="color: #ffffff; font-family: var(--font-mono); font-size: 13px; font-weight: 700;" id="sepa-bic-val">DEUTDEDB505</code>
+                      </div>
+                      <button type="button" class="btn-copy-address" style="cursor: pointer;" onclick="copyText('DEUTDEDB505', this)">Copy BIC</button>
+                    </div>
+
+                    <!-- Payment Reference -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(18, 21, 36, 0.6); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                      <span style="color: #94a3b8; font-size: 12px;">Payment Reference:</span>
+                      <code style="color: #38bdf8; font-family: var(--font-mono); font-weight: 700;">INVEST-<span id="sepa-ref-code">88F2</span></code>
+                    </div>
+                  </div>
+
+                  <div style="font-size: 11px; color: #94a3b8; margin-top: 12px; line-height: 1.5;">
+                    💡 <em>Please include the payment reference in your transfer note. Your MT4/MT5 license key and verified preset bundle will be dispatched automatically upon receipt.</em>
+                  </div>
                 </div>
               </div>
 

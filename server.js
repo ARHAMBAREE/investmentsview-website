@@ -206,6 +206,14 @@ app.post('/api/checkout', (req, res) => {
   const usdtAddress = 'TQ3aZpB2WkM99xL7vC8bYmNqJ6sU1dE4tR';
   const btcAddress = 'bc1q9v8h27m6u5w4t3s2r1q0p9o8n7m6l5k4j3';
 
+  // Bank Transfer (SEPA / Wire) Details
+  const bankDetails = {
+    accountHolder: 'ABDUL KHALIQUE',
+    iban: 'DE27 5057 0024 00730101 00',
+    bic: 'DEUTDEDB505',
+    bank: 'DEUTSCHE BANK OFFENBACH'
+  };
+
   res.json({
     success: true,
     orderId,
@@ -219,6 +227,7 @@ app.post('/api/checkout', (req, res) => {
     paymentMethod: paymentMethod || 'USDT (TRC20)',
     usdtAddress,
     btcAddress,
+    bankDetails,
     downloadUrl: `/api/download/preset?bot=${isGdas ? 'gdas' : 'velocity'}&plan=${encodeURIComponent(plan)}&platform=${encodeURIComponent(platform || 'MT5')}`,
     setupGuideUrl: '#tutorial',
     message: 'Your activation license key is active and bound to your account.'
