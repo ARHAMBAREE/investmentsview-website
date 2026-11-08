@@ -202,9 +202,11 @@ app.post('/api/checkout', (req, res) => {
   const licenseKey = `${prefix}-${randomHex()}-${randomHex()}-${randomHex()}`;
   const orderId = `ORD-${Date.now().toString(36).toUpperCase()}-${randomHex()}`;
 
-  // Crypto Mock Addresses
-  const usdtAddress = 'TQ3aZpB2WkM99xL7vC8bYmNqJ6sU1dE4tR';
-  const btcAddress = 'bc1q9v8h27m6u5w4t3s2r1q0p9o8n7m6l5k4j3';
+  // Official Merchant Crypto Vault Addresses
+  const usdtTrc20Address = 'TBNjKHfzE8DCBuHLyGZ4BFRasPyd5EGYdv';
+  const usdtErc20Address = '0xD8a4Edb2895317F1a29514ABd63953eCcb607119';
+  const btcAddress = '1PwoApM1F5F8yKcDVmEUPxPedxJjqgjp3Q';
+  const usdtAddress = usdtTrc20Address;
 
   // Bank Transfer (SEPA / Wire) Details
   const bankDetails = {
@@ -226,6 +228,8 @@ app.post('/api/checkout', (req, res) => {
     email: email.trim(),
     paymentMethod: paymentMethod || 'USDT (TRC20)',
     usdtAddress,
+    usdtTrc20Address,
+    usdtErc20Address,
     btcAddress,
     bankDetails,
     downloadUrl: `/api/download/preset?bot=${isGdas ? 'gdas' : 'velocity'}&plan=${encodeURIComponent(plan)}&platform=${encodeURIComponent(platform || 'MT5')}`,

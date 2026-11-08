@@ -1117,7 +1117,7 @@ function initCheckoutController() {
     });
   });
 
-  // Payment Tabs (Card, Crypto, SEPA, PayPal)
+  // Payment Tabs (Card, Crypto, SEPA)
   const payTabs = document.querySelectorAll('.pay-tab-btn');
   const payPanes = document.querySelectorAll('.pay-pane');
 
