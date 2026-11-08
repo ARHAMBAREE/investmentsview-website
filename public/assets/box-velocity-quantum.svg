@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="qBoxBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141a2e" />
+      <stop offset="50%" stop-color="#0c111d" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+    <linearGradient id="cyanEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <ellipse cx="200" cy="450" rx="140" ry="18" fill="rgba(0,0,0,0.6)"/>
+  <polygon points="65,95 110,75 110,410 65,390" fill="#090d18" stroke="rgba(56,189,248,0.3)" stroke-width="1.5"/>
+  <text transform="translate(85,260) rotate(-90)" font-family="sans-serif" font-weight="900" font-size="14" fill="#6366f1" letter-spacing="4">QUANTUM AI EA</text>
+
+  <polygon points="110,75 330,55 330,375 110,410" fill="url(#qBoxBg)" stroke="url(#cyanEdge)" stroke-width="2.5"/>
+  
+  <g transform="translate(220, 200)">
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6,4"/>
+    <circle cx="0" cy="0" r="28" fill="rgba(99,102,241,0.2)" stroke="#a855f7" stroke-width="2"/>
+    <polygon points="0,-18 16,12 -16,12" fill="#38bdf8"/>
+  </g>
+
+  <text x="220" y="295" font-family="sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">VELOCITY</text>
+  <text x="220" y="318" font-family="sans-serif" font-weight="900" font-size="18" fill="#38bdf8" text-anchor="middle">QUANTUM AI</text>
+  <text x="220" y="336" font-family="sans-serif" font-weight="700" font-size="11" fill="#a855f7" text-anchor="middle">NEXT-GEN ARBITRAGE</text>
+  <polygon points="65,95 285,75 330,55 110,75" fill="#1b233a" stroke="rgba(56,189,248,0.4)" stroke-width="1"/>
+</svg>

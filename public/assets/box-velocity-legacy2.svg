@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="leg2BoxBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141a1f" />
+      <stop offset="50%" stop-color="#0d1114" />
+      <stop offset="100%" stop-color="#06090c" />
+    </linearGradient>
+    <linearGradient id="tealEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+  </defs>
+  <ellipse cx="200" cy="450" rx="140" ry="18" fill="rgba(0,0,0,0.6)"/>
+  <polygon points="65,95 110,75 110,410 65,390" fill="#080d10" stroke="rgba(20,184,166,0.3)" stroke-width="1.5"/>
+  <text transform="translate(85,260) rotate(-90)" font-family="sans-serif" font-weight="900" font-size="14" fill="#0f766e" letter-spacing="4">BREAKOUT v2.8</text>
+  <polygon points="110,75 330,55 330,375 110,410" fill="url(#leg2BoxBg)" stroke="url(#tealEdge)" stroke-width="2.5"/>
+  <g transform="translate(220, 200)">
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#14b8a6" stroke-width="2"/>
+    <path d="M-15 0 L15 0 M0 -15 L0 15" stroke="#14b8a6" stroke-width="3"/>
+  </g>
+  <text x="220" y="295" font-family="sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle">VELOCITY</text>
+  <text x="220" y="318" font-family="sans-serif" font-weight="900" font-size="18" fill="#14b8a6" text-anchor="middle">BREAKOUT v2.8</text>
+  <text x="220" y="336" font-family="sans-serif" font-weight="700" font-size="11" fill="#64748b" text-anchor="middle">LEGACY ARCHIVE</text>
+  <polygon points="65,95 285,75 330,55 110,75" fill="#1a252b" stroke="rgba(20,184,166,0.4)" stroke-width="1"/>
+</svg>

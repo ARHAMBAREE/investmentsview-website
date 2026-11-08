@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velocity Runner EA | Automated Forex &amp; Gold Trading Bot | investmentsview.de</title>
+  <meta name="description" content="Velocity Runner EA &amp; GDAS EA - Institutional-grade automated MT4 &amp; MT5 algorithmic trading bots for Gold (XAUUSD). Stabilized martingale grid, delta-neutral hedging, 24/7 VPS-ready.">
+  <meta name="keywords" content="Velocity Runner EA, GDAS EA, Forex Trading Bot, XAUUSD EA, Martingale Grid Bot, Automated Trading, MetaTrader 5, Prop Firm EA, investmentsview.de">
+  <link rel="canonical" href="https://investmentsview.de">
+
+  <!-- OpenGraph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://investmentsview.de/">
+  <meta property="og:title" content="InvestmentsView — Institutional Algorithmic Systems">
+  <meta property="og:description" content="Velocity Runner EA &amp; GDAS EA - Institutional-grade automated MT4 &amp; MT5 algorithmic trading bots for Gold (XAUUSD). Stabilized martingale grid, delta-neutral hedging, 24/7 VPS-ready.">
+  <meta property="og:image" content="/assets/og-banner.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="InvestmentsView — Institutional Algorithmic Systems">
+  <meta name="twitter:description" content="Velocity Runner EA - Verified MT4/MT5 algorithmic Forex &amp; Gold robot with dynamic trailing stop and news protection.">
+  <meta name="twitter:image" content="/assets/og-banner.jpg">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "InvestmentsView - Velocity Runner EA",
+    "operatingSystem": "MetaTrader 4, MetaTrader 5, Windows, VPS",
+    "applicationCategory": "FinanceApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "249.00",
+      "priceCurrency": "EUR"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.95",
+      "reviewCount": "142"
+    }
+  }
+  </script>
+
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="/assets/favicon-128.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet (Cache Busted) -->
+  <link rel="stylesheet" href="/css/style.css?v=8.0">
+</head>
+<body>
+
+  <!-- Dynamic Animated Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <div class="content-wrapper">
+
+    <!-- Institutional Status Bar -->
+    <div class="server-status-bar">
+      <div class="server-status-left">
+        <span class="status-ping">
+          <span class="ping-dot"></span>
+          Equinix LD4 (Frankfurt) Low Latency: 1.2ms
+        </span>
+        <span style="color: #64748b;">•</span>
+        <span>Verified Algorithmic Uptime: 99.98%</span>
+      </div>
+      <div>
+        <span>Server GMT+1 &bull; Domain: <strong>investmentsview.de</strong></span>
+      </div>
+    </div>
+
+    <!-- Top Live Forex & Gold Ticker Bar -->
+    <div class="ticker-wrap">
+      <div class="ticker-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+    <!-- Navigation Header (Matches Tradivo Navigation) -->
+    <header class="navbar">
+      <div class="container nav-container">
+        <!-- Logo -->
+        <a href="#home" class="brand-logo">
+          <img src="/assets/logo.png" alt="InvestmentsView — Algorithmic Systems" class="site-nav-logo">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#description" class="nav-link">Investors</a></li>
+          <li><a href="#gallery" class="nav-link">Fleet</a></li>
+          <li><a href="#prices" class="nav-link">Prices</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Action Controls -->
+        <div class="nav-actions">
+          <button id="btn-audio-toggle" class="btn-control-toggle" title="Toggle Tactile Sounds">
+            🔊 Sound: ON
+          </button>
+          <button id="btn-lang-toggle" class="btn-control-toggle" title="Toggle Language (investmentsview.de)">
+            🌐 EN
+          </button>
+          <a href="#prices" class="btn-nav-buy trigger-buy-flow" data-plan="Velocity Runner EA Pro - $200">
+            Buy Now
+          </a>
+          <button class="mobile-toggle" aria-label="Toggle navigation">
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tradivo Signature 3D Golden Curved Ribbon (Top Stage - Matches Screenshot 5) -->
+    <div class="tradivo-golden-ribbon top">
+      <div class="ribbon-glow"></div>
+      <svg viewBox="0 0 1440 52" fill="none" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="goldRibbonTier1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4a3010"/>
+            <stop offset="12%" stop-color="#9e6d2b"/>
+            <stop offset="30%" stop-color="#e8c67e"/>
+            <stop offset="50%" stop-color="#fff4d4"/>
+            <stop offset="70%" stop-color="#e8c67e"/>
+            <stop offset="88%" stop-color="#9e6d2b"/>
+            <stop offset="100%" stop-color="#4a3010"/>
+          </linearGradient>
+          <linearGradient id="goldRibbonTier2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2a1906"/>
+            <stop offset="15%" stop-color="#7a4b17"/>
+            <stop offset="35%" stop-color="#c89658"/>
+            <stop offset="50%" stop-color="#f5c276"/>
+            <stop offset="65%" stop-color="#c89658"/>
+            <stop offset="85%" stop-color="#7a4b17"/>
+            <stop offset="100%" stop-color="#2a1906"/>
+          </linearGradient>
+          <linearGradient id="goldRibbonTier3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#140a02"/>
+            <stop offset="25%" stop-color="#422509"/>
+            <stop offset="50%" stop-color="#7a4714"/>
+            <stop offset="75%" stop-color="#422509"/>
+            <stop offset="100%" stop-color="#140a02"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,8 Q720,24 1440,8 L1440,16 Q720,32 0,16 Z" fill="url(#goldRibbonTier1)"/>
+        <path d="M0,16 Q720,32 1440,16 L1440,34 Q720,50 0,34 Z" fill="url(#goldRibbonTier2)"/>
+        <path d="M0,34 Q720,50 1440,34 L1440,42 Q720,58 0,42 Z" fill="url(#goldRibbonTier3)"/>
+      </svg>
+    </div>
+
+    <!-- Main Content Area -->
+    <main>
+
+      <!-- Hero Section -->
+      <section id="home" class="hero-section">
+        <div class="container">
+          <div class="hero-pill-badge">
+            <span class="dot"></span>
+            Velocity Runner EA &amp; GDAS EA • Institutional Engines Live on MT5
+          </div>
+
+          <h1 class="hero-title">
+            Next-Generation Quantitative Execution Engine<br>
+            <span class="gradient-gold">For Gold (XAU/USD)</span>
+          </h1>
+
+          <p class="hero-subtitle" style="font-size: 19px; color: #f1f5f9; font-weight: 600; margin-bottom: 12px;">
+            Engineered for systematic liquidity capture, adaptive trend detachment, and non-linear capital preservation.
+          </p>
+
+          <p class="hero-subtitle" style="font-size: 15px; color: #94a3b8; max-width: 860px; line-height: 1.65;">
+            The Velocity Grid Runner is an institutional-grade algorithmic trading system specifically optimized for the unique volatility and liquidity profile of Gold (XAU/USD). Combining bidirectional order flow synthesis, dynamic trend momentum detachment, and a proprietary delta-neutral hedge recovery mechanism.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#prices" class="btn-primary-gold trigger-buy-flow" data-plan="Velocity Runner EA Pro - $200">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Get Instant Access
+            </a>
+            <a href="#architecture" class="btn-secondary-dark">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              Explore Architecture
+            </a>
+          </div>
+
+          <div class="hero-badges-row">
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Prop Firm Challenge (FTMO) Passed
+            </span>
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Stabilized Smart Martingale Engine
+            </span>
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Target: Gold (XAUUSD Specialist)
+            </span>
+            <span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              investmentsview.de &bull; German Domain
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prop Firm Passing Matrix Showcase -->
+      <section class="propfirm-matrix-section">
+        <div class="container">
+          <div class="propfirm-box">
+            <div class="propfirm-item">
+              <div class="propfirm-label">FTMO Phase 1 Challenge</div>
+              <div class="propfirm-val green">100% PASSED</div>
+              <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="propfirm-item">
+              <div class="propfirm-label">FTMO Phase 2 Verification</div>
+              <div class="propfirm-val green">100% PASSED</div>
+              <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="propfirm-item">
+              <div class="propfirm-label">Max Daily Drawdown</div>
+              <div class="propfirm-val gold">1.82% / 5.0%</div>
+              <div class="progress-track"><div class="progress-fill" style="width: 36%; background: var(--accent-gold);"></div></div>
+            </div>
+            <div class="propfirm-item">
+              <div class="propfirm-label">Total Account Drawdown</div>
+              <div class="propfirm-val green">3.40% / 10.0%</div>
+              <div class="progress-track"><div class="progress-fill" style="width: 34%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tradivo Signature 3D Golden Curved Ribbon (Mid Stage Divider - Matches Screenshot 1 & 5) -->
+      <div class="tradivo-golden-ribbon">
+        <div class="ribbon-glow"></div>
+        <svg viewBox="0 0 1440 52" fill="none" preserveAspectRatio="none">
+          <path d="M0,8 Q720,24 1440,8 L1440,16 Q720,32 0,16 Z" fill="url(#goldRibbonTier1)"/>
+          <path d="M0,16 Q720,32 1440,16 L1440,34 Q720,50 0,34 Z" fill="url(#goldRibbonTier2)"/>
+          <path d="M0,34 Q720,50 1440,34 L1440,42 Q720,58 0,42 Z" fill="url(#goldRibbonTier3)"/>
+        </svg>
+      </div>
+
+      <!-- Institutional Quantitative Architecture & 6 Capabilities (#architecture) -->
+      <section id="architecture" class="quant-architecture-section">
+        <div class="container">
+          
+          <div class="section-header">
+            <span class="ea-eyebrow-tag" style="margin-bottom: 12px; display: inline-block;">PROPRIETARY METATRADER 5 QUANTITATIVE TECHNOLOGY</span>
+            <h2 class="section-title">Next-Generation Execution Architecture</h2>
+            <p class="section-subtitle">
+              Engineered for systematic liquidity capture, adaptive trend detachment, and non-linear capital preservation on Gold (XAU/USD).
+            </p>
+          </div>
+
+          <!-- Executive Summary Callout Box -->
+          <div class="quant-summary-card">
+            <div class="quant-summary-header">
+              <span class="quant-summary-badge">EXECUTIVE SUMMARY</span>
+              <h3 class="quant-summary-title">Institutional Liquidity &amp; Momentum Synthesis</h3>
+            </div>
+            <p class="quant-summary-text">
+              The <strong>Velocity Grid Runner</strong> is an institutional-grade algorithmic trading system specifically optimized for the unique volatility and liquidity profile of <strong>Gold (XAU/USD)</strong>. Combining bidirectional order flow synthesis, dynamic trend momentum detachment, and a proprietary delta-neutral hedge recovery mechanism, the algorithm captures steady yield during consolidations while actively insulating your capital during violent macro-trend expansions.
+            </p>
+          </div>
+
+          <!-- 6 Quantitative Capabilities Grid (3x2) -->
+          <div class="quant-grid-3x2">
+            
+            <!-- Pillar 1 -->
+            <div class="quant-card">
+              <div class="quant-card-icon-wrap">⚡</div>
+              <h3 class="quant-card-title">1. Bidirectional Liquidity Harvesting</h3>
+              <ul class="quant-features-sublist">
+                <li>
+                  <strong>Dual-Market Engagement:</strong> Seamlessly operates across simultaneous long and short vectors, capturing price oscillations without directional forecasting bias.
+                </li>
+                <li>
+                  <strong>Non-Linear Position Staggering:</strong> Uses mathematically optimized, multi-tier exposure scaling to maintain a tight breakeven horizon while keeping overall portfolio leverage strictly controlled.
+                </li>
+                <li>
+                  <strong>Harmonized Basket Synthesis:</strong> Calculates dynamic unified equilibrium targets in real time, enabling entire position clusters to close cleanly in synchronized net profit upon minor market pullbacks.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="quant-card">
+              <div class="quant-card-icon-wrap">🚀</div>
+              <h3 class="quant-card-title">2. Proprietary Velocity Detachment Technology</h3>
+              <ul class="quant-features-sublist">
+                <li>
+                  <strong>Breakout Momentum Isolation:</strong> Unlike conventional grid algorithms that accumulate adverse risk during strong breakouts, the system continuously profiles market velocity.
+                </li>
+                <li>
+                  <strong>Autonomous Trend Runners:</strong> When market conditions display explosive momentum, the algorithm decouples favorable expansion orders into independent runner positions, letting winners capitalize on directional velocity while preserving the safety of the core basket.
+                </li>
+                <li>
+                  <strong>Adaptive Volatility Profiling:</strong> Automatically shifts between tight compression harvesting during quiet sessions and momentum capture during high-liquidity volatility spikes.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="quant-card green">
+              <div class="quant-card-icon-wrap">🛡️</div>
+              <h3 class="quant-card-title">3. Institutional Delta-Neutral Capital Defense</h3>
+              <ul class="quant-features-sublist">
+                <li>
+                  <strong>Dynamic Exposure Balancing:</strong> If adverse market conditions exceed statistical tolerances, the EA instantly deploys an automated delta-neutral hedge, locking net exposure and neutralizing floating market risk.
+                </li>
+                <li>
+                  <strong>Structural Exhaustion Recognition:</strong> The algorithm actively monitors multi-timeframe swing geometry to identify genuine price exhaustion and structural reversals, ensuring the hedge is released only when the high-probability recovery window opens.
+                </li>
+                <li>
+                  <strong>Zero-Loss Equilibrium Exit:</strong> Systematically guides recovering positions back to pre-hedge capital benchmarks without taking impulsive market losses.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="quant-card">
+              <div class="quant-card-icon-wrap">⏱️</div>
+              <h3 class="quant-card-title">4. Multi-Tier Risk Architecture &amp; Daily Circuit Breaker</h3>
+              <ul class="quant-features-sublist">
+                <li>
+                  <strong>Automated Daily Baselines:</strong> Automatically benchmarks account equity at the opening of each trading day, ensuring risk calculations are always relative to realized gains.
+                </li>
+                <li>
+                  <strong>Hard Emergency Equity Safeguard:</strong> Includes an uncompromising hard-stop circuit breaker that acts as the ultimate catastrophe firewall against Black Swan geopolitical events.
+                </li>
+                <li>
+                  <strong>Next-Day Auto-Reactivation:</strong> Optional automated session reset allows hands-free continuity while strictly respecting your maximum daily risk budget.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pillar 5 -->
+            <div class="quant-card">
+              <div class="quant-card-icon-wrap">📊</div>
+              <h3 class="quant-card-title">5. Live Tactical HUD Dashboard</h3>
+              <ul class="quant-features-sublist">
+                <li>
+                  <strong>Real-Time On-Chart Telemetry:</strong> A built-in dark-mode graphical cockpit rendered directly on your MetaTrader 5 chart.
+                </li>
+                <li>
+                  <strong>Instant Risk Visibility:</strong> Provides instant insight into net lot exposure, combined floating P&amp;L, real-time drawdown metrics, volatility states, and active protection modes without cluttering your workspace.
+                </li>
+                <li>
+                  <strong>Zero Visual Lag:</strong> Optimized for ultra-low CPU footprint with flicker-free graphical rendering.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Pillar 6 -->
+            <div class="quant-card">
+              <div class="quant-card-icon-wrap">🔒</div>
+              <h3 class="quant-card-title">6. Enterprise-Grade Fail-Safe Architecture</h3>
+              <ul class="quant-features-sublist">
+                <li>
+                  <strong>Disaster-Resilient State Persistence:</strong> Features continuous low-latency state serialization to disk. In the event of VPS unexpected reboots, terminal crashes, or connection loss, the algorithm seamlessly resumes full state tracking with zero orphaned orders.
+                </li>
+                <li>
+                  <strong>Execution Slippage &amp; Multi-Fill Guard:</strong> Built-in multi-tier order execution handling designed specifically for institutional and ECN broker environments to minimize slippage and eliminate execution rejections.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Feature Summary Comparison Table -->
+          <div class="quant-comparison-box">
+            <div class="quant-table-header">
+              <div>
+                <h3 class="quant-table-title">
+                  <span>Institutional Comparison Matrix</span>
+                </h3>
+                <p class="quant-table-subtitle">Why traditional grid and retail martingale robots blow accounts while Velocity Runner preserves capital.</p>
+              </div>
+              <span class="quant-summary-badge">AUDITED SPECIFICATIONS</span>
+            </div>
+
+            <div class="quant-table-wrapper">
+              <table class="quant-comparison-table">
+                <thead>
+                  <tr>
+                    <th style="width: 26%;">Capability</th>
+                    <th style="width: 37%;">Traditional Grid / Martingale EAs</th>
+                    <th style="width: 37%;" class="col-velocity">Velocity Grid Runner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="quant-capability-label">
+                      <span>Trend Resistance</span>
+                    </td>
+                    <td class="cell-traditional">
+                      <span class="status-x">✕</span> Accumulates toxic drawdowns in strong trends
+                    </td>
+                    <td class="cell-velocity">
+                      <span class="status-check">✓</span> Dynamic Velocity Detachment isolates momentum
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="quant-capability-label">
+                      <span>Adverse Protection</span>
+                    </td>
+                    <td class="cell-traditional">
+                      <span class="status-x">✕</span> Passive hope or destructive hard account stops
+                    </td>
+                    <td class="cell-velocity">
+                      <span class="status-check">✓</span> Intelligent Delta-Neutral Hedging &amp; Reversal Unlocking
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="quant-capability-label">
+                      <span>Take-Profit Model</span>
+                    </td>
+                    <td class="cell-traditional">
+                      <span class="status-x">✕</span> Chaotic, fragmented individual exits
+                    </td>
+                    <td class="cell-velocity">
+                      <span class="status-check">✓</span> Unified Synchronized Basket Equilibrium
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="quant-capability-label">
+                      <span>Terminal Crash Safety</span>
+                    </td>
+                    <td class="cell-traditional">
+                      <span class="status-x">✕</span> Loses trade memory, duplicates orders
+                    </td>
+                    <td class="cell-velocity">
+                      <span class="status-check">✓</span> Full Binary State Persistence across restarts
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="quant-capability-label">
+                      <span>Visual Monitoring</span>
+                    </td>
+                    <td class="cell-traditional">
+                      <span class="status-x">✕</span> Cluttered chart lines or basic text comments
+                    </td>
+                    <td class="cell-velocity">
+                      <span class="status-check">✓</span> Integrated Real-Time Tactical HUD Cockpit
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Investor Account Information & EA Description Section (Matches Tradivo Reference Screenshot) -->
+      <section id="description" class="investor-details-section">
+        <div class="container">
+          <div class="investor-grid-layout">
+            
+            <!-- Left Column: Dual Bot Architecture & 14 Key Capabilities -->
+            <div class="ea-info-col">
+              <span class="ea-eyebrow-tag">ADVANCED GOLD EXPERT ADVISORS MT4 &amp; MT5</span>
+              <h2 class="ea-main-title">
+                Velocity Runner EA &amp; GDAS EA Fleet
+              </h2>
+              <p class="ea-overview-text">
+                InvestmentsView provides two specialized quantitative trading engines engineered specifically for <strong>Gold (XAUUSD)</strong>. Choose between conservative capital preservation or aggressive high-volatility momentum:
+              </p>
+
+              <!-- Two Bot Duality Pills -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px;">
+                <div style="background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; padding: 14px;">
+                  <div style="font-size: 13px; font-weight: 800; color: #22c55e; margin-bottom: 4px;">🛡️ GDAS EA</div>
+                  <div style="font-size: 12px; color: #cbd5e1; line-height: 1.45;"><strong>Low Risk &bull; Capital Preservation</strong><br>Low drawdown (&lt;3.2%), clears baskets fast, stabilized grid hedging.</div>
+                </div>
+                <div style="background: rgba(200, 150, 88, 0.08); border: 1px solid rgba(200, 150, 88, 0.3); border-radius: 8px; padding: 14px;">
+                  <div style="font-size: 13px; font-weight: 800; color: var(--accent-gold); margin-bottom: 4px;">🔥 VELOCITY RUNNER EA</div>
+                  <div style="font-size: 12px; color: #cbd5e1; line-height: 1.45;"><strong>High Volatility &bull; Maximum Profit</strong><br>Higher reward, dynamic escape runner isolation, delta-neutral recovery.</div>
+                </div>
+              </div>
+
+              <h3 class="ea-why-title">Why Trade With InvestmentsView Algorithmic Systems?</h3>
+              <p class="ea-overview-text" style="margin-bottom: 20px;">
+                Enjoy fully automated trade execution, adaptive risk controls, and intelligent position management with zero emotional bias and verified MT5 investor account transparency.
+              </p>
+
+              <h4 class="ea-features-title">Core Fleet Features &amp; Safeguards:</h4>
+              <ul class="ea-features-list">
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Dynamic Martingale Grid:</strong> Intelligent position scaling, rapid basket clearance &amp; delta-neutral hedge defense</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Dynamic Trailing Protection:</strong> Adaptive ATR-based Stop Loss trailing &amp; profit lock</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Prop-Firm Challenge Pass:</strong> Hard daily loss circuit breakers &amp; max drawdown limits (&lt;4%)</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Institutional Spread &amp; Slippage Guard:</strong> Blocks entries during toxic spread widening</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Tactical On-Chart HUD:</strong> Real-time balance, lot exposure, and floating P&amp;L cockpit</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Target: Gold Specialist:</strong> Calibrated specifically for XAUUSD liquidity cycles &amp; FX majors</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Multi-Account Compatibility:</strong> Standard ECN, Raw Spread &amp; USC/Cent accounts</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Broker Agnostic:</strong> Optimized for Exness, Vantage, IC Markets, Lirunex, or any MT4/MT5 broker</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>State Persistence:</strong> Disaster-resilient serialization eliminates orphaned orders during VPS reboots</span>
+                </li>
+                <li class="ea-feature-item">
+                  <span class="ea-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span><strong>Complete Package:</strong> Instant license activation, MT4/MT5 verified .set presets &amp; 24/7 VIP desk</span>
+                </li>
+              </ul>
+
+              <div class="ea-risk-disclaimer">
+                ⚠️ <strong>Trading involves risk:</strong> Past performance does not guarantee future results. Market conditions, broker execution, spread, volatility, and risk settings can affect overall results.
+              </div>
+            </div>
+
+            <!-- Right Column: TWO Investor Accounts (Low Risk vs High Risk) -->
+            <div class="investor-cards-container">
+              <!-- Risk Mode Selector Tabs -->
+              <div class="investor-tabs-nav">
+                <button class="investor-tab-btn active" data-mode="low">
+                  <span>🛡️ GDAS EA (Low Risk)</span>
+                </button>
+                <button class="investor-tab-btn high-risk" data-mode="high">
+                  <span>🔥 Velocity Runner (High Risk)</span>
+                </button>
+                <button class="investor-tab-btn both" data-mode="both">
+                  <span>⊞ Compare Both</span>
+                </button>
+              </div>
+
+              <!-- Container for Cards -->
+              <div id="investor-dual-container" class="investor-dual-grid">
+
+                <!-- 1. LOW RISK INVESTOR ACCOUNT CARD: GDAS EA (Neon Green Glow) -->
+                <div id="investor-card-low" class="investor-card low-risk">
+                  <div class="investor-card-header">
+                    <div class="investor-icon-glow">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="investor-title-wrap">
+                      <h3>GDAS EA • GOLD DIGGER</h3>
+                      <div class="highlight">ACCOUNT SAVER • LOW RISK</div>
+                    </div>
+                  </div>
+
+                  <p class="investor-card-subtitle">
+                    Use the following MT5 credentials to access the low-risk GDAS EA investor account:
+                  </p>
+
+                  <div class="investor-metrics-strip">
+                    <span class="investor-metric-tag">🛡️ Capital Defense</span>
+                    <span class="investor-metric-tag">Stabilized Grid</span>
+                    <span class="investor-metric-tag">Safeguard Sensor</span>
+                    <span class="investor-metric-tag">Max DD &lt; 3.2%</span>
+                    <span class="investor-metric-tag" style="background: rgba(34, 197, 94, 0.2); border-color: #22c55e;">FTMO Pass Ready</span>
+                  </div>
+
+                  <!-- 3 Credential Rows (Matches Screenshot) -->
+                  <div class="investor-cred-rows">
+                    <!-- Row 1: Server Name -->
+                    <div class="investor-cred-row">
+                      <div class="cred-label-group">
+                        <svg class="cred-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        <span>Server Name:</span>
+                      </div>
+                      <div class="cred-value-box" title="Click to copy server name">
+                        <span class="cred-value-text">LirunexLimited-Live</span>
+                        <button class="cred-copy-btn" data-copy="LirunexLimited-Live" data-label="Server Name" aria-label="Copy server name">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 2: MT5 ID -->
+                    <div class="investor-cred-row">
+                      <div class="cred-label-group">
+                        <svg class="cred-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span>MT5 ID:</span>
+                      </div>
+                      <div class="cred-value-box" title="Click to copy MT5 ID">
+                        <span class="cred-value-text">2091004395</span>
+                        <button class="cred-copy-btn" data-copy="2091004395" data-label="MT5 ID" aria-label="Copy MT5 ID">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 3: Investor Password -->
+                    <div class="investor-cred-row">
+                      <div class="cred-label-group">
+                        <svg class="cred-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Investor Password:</span>
+                      </div>
+                      <div class="cred-value-box" title="Click to copy password">
+                        <span class="cred-value-text">LowRisk1:investmentsview.de</span>
+                        <button class="cred-copy-btn" data-copy="LowRisk1:investmentsview.de" data-label="Investor Password" aria-label="Copy investor password">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="investor-card-footer">
+                    <div class="investor-trust-shield">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                      <span>Capital Defense &bull; Powered by InvestmentsView</span>
+                    </div>
+                    <div class="investor-status-live">
+                      <span class="dot-pulse" style="width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: inline-block;"></span>
+                      <span>Live Read-Only MT5</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. HIGH RISK INVESTOR ACCOUNT CARD: VELOCITY RUNNER EA (Fiery Amber Glow) -->
+                <div id="investor-card-high" class="investor-card high-risk" style="display: none;">
+                  <div class="investor-card-header">
+                    <div class="investor-icon-glow">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <div class="investor-title-wrap">
+                      <h3>VELOCITY RUNNER EA</h3>
+                      <div class="highlight">HIGH VOLATILITY • MAX PROFIT</div>
+                    </div>
+                  </div>
+
+                  <p class="investor-card-subtitle">
+                    Use the following MT5 credentials to access the high-volatility Velocity Runner investor account:
+                  </p>
+
+                  <div class="investor-metrics-strip">
+                    <span class="investor-metric-tag">🔥 Dynamic Escape</span>
+                    <span class="investor-metric-tag">Volatility Runner</span>
+                    <span class="investor-metric-tag">Smart Recovery</span>
+                    <span class="investor-metric-tag">Max DD: 8.4%</span>
+                    <span class="investor-metric-tag" style="background: rgba(234, 179, 8, 0.2); border-color: #eab308;">Target: 45-85%/Mo</span>
+                  </div>
+
+                  <!-- 3 Credential Rows (Matches Screenshot) -->
+                  <div class="investor-cred-rows">
+                    <!-- Row 1: Server Name -->
+                    <div class="investor-cred-row">
+                      <div class="cred-label-group">
+                        <svg class="cred-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        <span>Server Name:</span>
+                      </div>
+                      <div class="cred-value-box" title="Click to copy server name">
+                        <span class="cred-value-text">Exness-Real18</span>
+                        <button class="cred-copy-btn" data-copy="Exness-Real18" data-label="Server Name" aria-label="Copy server name">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 2: MT5 ID -->
+                    <div class="investor-cred-row">
+                      <div class="cred-label-group">
+                        <svg class="cred-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span>MT5 ID:</span>
+                      </div>
+                      <div class="cred-value-box" title="Click to copy MT5 ID">
+                        <span class="cred-value-text">99245108</span>
+                        <button class="cred-copy-btn" data-copy="99245108" data-label="MT5 ID" aria-label="Copy MT5 ID">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 3: Investor Password -->
+                    <div class="investor-cred-row">
+                      <div class="cred-label-group">
+                        <svg class="cred-label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Investor Password:</span>
+                      </div>
+                      <div class="cred-value-box" title="Click to copy password">
+                        <span class="cred-value-text">HighRisk1:investmentsview.de</span>
+                        <button class="cred-copy-btn" data-copy="HighRisk1:investmentsview.de" data-label="Investor Password" aria-label="Copy investor password">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="investor-card-footer">
+                    <div class="investor-trust-shield">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                      <span>Maximum Profit &bull; Powered by InvestmentsView</span>
+                    </div>
+                    <div class="investor-status-live" style="color: #eab308;">
+                      <span class="dot-pulse" style="width: 7px; height: 7px; border-radius: 50%; background: #eab308; display: inline-block;"></span>
+                      <span>Live Read-Only MT5</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Gallery Section (Matches Tradivo Screenshot 1) -->
+      <section id="gallery" class="product-gallery-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Product Gallery</h2>
+            <p class="section-subtitle">Browse our current, upcoming, and past releases.</p>
+          </div>
+
+          <!-- Pill Filter Tabs (Current 2, Upcoming 1, Past 2) -->
+          <div class="gallery-tabs-row">
+            <button class="gallery-tab-btn active" data-filter="current">
+              Current 2
+            </button>
+            <button class="gallery-tab-btn" data-filter="upcoming">
+              Upcoming 1
+            </button>
+            <button class="gallery-tab-btn" data-filter="past">
+              Past 2
+            </button>
+          </div>
+
+          <!-- Dynamic Product Cards Grid -->
+          <div class="product-grid">
+            <!-- Injected via JavaScript from /api/products -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Profit & Risk Calculator -->
+      <section class="calculator-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Automated Profit Calculator</h2>
+            <p class="section-subtitle">Simulate potential returns based on account balance and risk configuration.</p>
+          </div>
+
+          <div class="calc-box-glass">
+            <!-- Left Inputs -->
+            <div>
+              <div class="calc-input-group">
+                <div class="calc-label-row">
+                  <span>Trading Capital / Account Balance:</span>
+                  <span id="calc-balance-display" class="calc-value-display">$10,000</span>
+                </div>
+                <input type="range" id="calc-balance-slider" class="custom-range-slider" min="500" max="100000" step="500" value="10000">
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748b; margin-top: 6px;">
+                  <span>$500 Min</span>
+                  <span>$25,000</span>
+                  <span>$50,000</span>
+                  <span>$100,000 Max</span>
+                </div>
+              </div>
+
+              <div class="calc-input-group">
+                <div class="calc-label-row">
+                  <span>Risk Management Profile:</span>
+                </div>
+                <div class="risk-modes-row">
+                  <div class="risk-btn" data-risk="conservative">
+                    <span class="mode-title">Conservative</span>
+                    <span class="mode-desc">Prop Firm Safe (~22%/mo)</span>
+                  </div>
+                  <div class="risk-btn active" data-risk="balanced">
+                    <span class="mode-title">Balanced</span>
+                    <span class="mode-desc">Standard Growth (~38%/mo)</span>
+                  </div>
+                  <div class="risk-btn" data-risk="aggressive">
+                    <span class="mode-title">Aggressive</span>
+                    <span class="mode-desc">High Volatility (~52%/mo)</span>
+                  </div>
+                </div>
+              </div>
+
+              <p style="font-size: 12.5px; color: #94a3b8; line-height: 1.6;">
+                💡 <em>All presets include hard Stop-Loss, trailing drawdown shields, and high-impact news filter bypass options.</em>
+              </p>
+            </div>
+
+            <!-- Right Results -->
+            <div class="calc-output-card">
+              <div>
+                <div class="output-row">
+                  <span class="output-label">Estimated Daily Target:</span>
+                  <span id="calc-out-daily" class="output-val highlight-green">+$160</span>
+                </div>
+                <div class="output-row">
+                  <span class="output-label">Estimated Monthly Return:</span>
+                  <span id="calc-out-monthly" class="output-val highlight-gold">+$3,800</span>
+                </div>
+                <div class="output-row">
+                  <span class="output-label">Maximum Drawdown Limit:</span>
+                  <span id="calc-out-drawdown" class="output-val" style="color: #cbd5e1;">4.2% Dynamic Shield</span>
+                </div>
+                <div class="output-row">
+                  <span class="output-label">Projected 12-Month Compound:</span>
+                  <span id="calc-out-yearly" class="output-val highlight-green">+$42,800</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 20px;">
+                <a href="#prices" class="btn-primary-gold" style="width: 100%; justify-content: center;">
+                  Lock In This Configuration
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Plans Section -->
+      <section id="prices" class="pricing-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="ea-eyebrow-tag" style="margin-bottom: 12px; display: inline-block;">TRANSPARENT INSTITUTIONAL PRICING</span>
+            <h2 class="section-title">Select Your Algorithmic License</h2>
+            <p class="section-subtitle">Official verified pricing for Velocity Runner EA and GDAS EA. Instant activation &amp; preset bundles.</p>
+          </div>
+
+          <!-- Bot Selector Tabs -->
+          <div class="pricing-bot-selector-nav">
+            <button class="pricing-bot-tab active velocity" data-bot="velocity">
+              <span>🔥 Velocity Runner EA (High Volatility)</span>
+            </button>
+            <button class="pricing-bot-tab gdas" data-bot="gdas">
+              <span>🛡️ GDAS EA (Low Risk &bull; Capital Saver)</span>
+            </button>
+            <button class="pricing-bot-tab bundle" data-bot="bundle">
+              <span>👑 Dual Fleet VIP Pass (Both Bots)</span>
+            </button>
+          </div>
+
+          <!-- PANEL 1: VELOCITY RUNNER EA (HIGH VOLATILITY • MAXIMUM PROFIT) -->
+          <div id="pricing-panel-velocity" class="pricing-bot-panel active">
+            <div class="pricing-grid-4">
+              
+              <!-- 1 MONTH -->
+              <div class="pricing-card-v2">
+                <div class="pricing-badge-strip subtle">Standard Rate</div>
+                <div class="tier-duration-title">1 Month</div>
+                <div class="tier-license-count">1 MT4/MT5 License</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$200</div>
+                  <span class="pricing-savings-pill standard">Monthly Flex</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag">Dynamic Escape</span>
+                  <span class="tier-micro-tag">Volatility Runner</span>
+                  <span class="tier-micro-tag">Smart Recovery</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>1 Live MT4 or MT5 Trading Account</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Target: Gold (XAUUSD Specialist)</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Verified Preset (.set) Configuration Bundle</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Instant Automated License Key Generation</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="Velocity Runner EA - 1 Month ($200)" data-bot="velocity" data-price="200">
+                  Select 1 Month &bull; $200
+                </button>
+              </div>
+
+              <!-- 3 MONTHS -->
+              <div class="pricing-card-v2">
+                <div class="pricing-badge-strip subtle">Quarter Pass</div>
+                <div class="tier-duration-title">3 Months</div>
+                <div class="tier-license-count">1 MT4/MT5 License</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$400</div>
+                  <span class="pricing-savings-pill">SAVE 33%</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag">Dynamic Escape</span>
+                  <span class="tier-micro-tag">Volatility Runner</span>
+                  <span class="tier-micro-tag">Smart Recovery</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>1 Live &amp; 2 Demo Accounts Included</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>FTMO &amp; Prop-Firm Challenge Presets</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>ATR Trailing Stop &amp; News Filters</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Priority Telegram VIP Assistance</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="Velocity Runner EA - 3 Months ($400)" data-bot="velocity" data-price="400">
+                  Select 3 Months &bull; $400
+                </button>
+              </div>
+
+              <!-- 6 MONTHS -->
+              <div class="pricing-card-v2">
+                <div class="pricing-badge-strip">Popular Choice</div>
+                <div class="tier-duration-title">6 Months</div>
+                <div class="tier-license-count">2 MT4/MT5 Licenses</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$700</div>
+                  <span class="pricing-savings-pill">SAVE 71%</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag">Dynamic Escape</span>
+                  <span class="tier-micro-tag">Volatility Runner</span>
+                  <span class="tier-micro-tag">Smart Recovery</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span><strong>2 Live MT4/MT5 Licenses</strong></span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Dual Simultaneous Live Deployment</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Delta-Neutral Hedge Optimization</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>1-on-1 VPS Setup Assistance</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="Velocity Runner EA - 6 Months ($700)" data-bot="velocity" data-price="700">
+                  Select 6 Months &bull; $700
+                </button>
+              </div>
+
+              <!-- 1 YEAR (BEST VALUE) -->
+              <div class="pricing-card-v2 featured">
+                <div class="pricing-badge-strip">BEST VALUE</div>
+                <div class="tier-duration-title">1 Year</div>
+                <div class="tier-license-count">4 MT4/MT5 Licenses</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$1,200</div>
+                  <span class="pricing-savings-pill">SAVE 88% &bull; BEST VALUE</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag">Dynamic Escape</span>
+                  <span class="tier-micro-tag">Volatility Runner</span>
+                  <span class="tier-micro-tag">Smart Recovery</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span><strong>4 Live MT4/MT5 Licenses (Full Fleet)</strong></span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>All Quantitative Updates &amp; AI Additions</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Dedicated VIP Account Manager</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Remote White-Glove VPS Installation</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="Velocity Runner EA - 1 Year ($1,200)" data-bot="velocity" data-price="1200">
+                  Get Full Fleet &bull; $1,200
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Official Pricing Flyer Banner -->
+            <div class="pricing-flyer-banner">
+              <div class="pricing-flyer-info">
+                <img src="/assets/pricing-velocity.jpg" alt="Velocity Runner EA Official Pricing Card" class="pricing-flyer-thumb" onclick="openFlyerModal('/assets/pricing-velocity.jpg')">
+                <div class="pricing-flyer-text">
+                  <h4>Official Velocity Runner EA Pricing Document</h4>
+                  <p>Target: Gold (XAUUSD) &bull; High Volatility &bull; Maximum Profit &bull; Powered by InvestmentsView</p>
+                </div>
+              </div>
+              <button class="btn-view-flyer" onclick="openFlyerModal('/assets/pricing-velocity.jpg')">
+                View Official Flyer ↗
+              </button>
+            </div>
+          </div>
+
+          <!-- PANEL 2: GDAS EA (LOW RISK • CAPITAL PRESERVATION) -->
+          <div id="pricing-panel-gdas" class="pricing-bot-panel" style="display: none;">
+            <div class="pricing-grid-4">
+              
+              <!-- 1 MONTH -->
+              <div class="pricing-card-v2">
+                <div class="pricing-badge-strip subtle">Standard Rate</div>
+                <div class="tier-duration-title">1 Month</div>
+                <div class="tier-license-count green">1 MT4/MT5 License</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$150</div>
+                  <span class="pricing-savings-pill standard">Monthly Flex</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag green">Capital Defense</span>
+                  <span class="tier-micro-tag green">Stabilized Grid</span>
+                  <span class="tier-micro-tag green">Safeguard Sensor</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>1 Live MT4 or MT5 Trading Account</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Target: Gold (XAUUSD Specialist)</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Low Drawdown Preset (&lt;3.2% DD Ceiling)</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Instant License Key Generation</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="GDAS EA - 1 Month ($150)" data-bot="gdas" data-price="150">
+                  Select 1 Month &bull; $150
+                </button>
+              </div>
+
+              <!-- 3 MONTHS -->
+              <div class="pricing-card-v2">
+                <div class="pricing-badge-strip subtle">Quarter Pass</div>
+                <div class="tier-duration-title">3 Months</div>
+                <div class="tier-license-count green">1 MT4/MT5 License</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$300</div>
+                  <span class="pricing-savings-pill">SAVE 33%</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag green">Capital Defense</span>
+                  <span class="tier-micro-tag green">Stabilized Grid</span>
+                  <span class="tier-micro-tag green">Safeguard Sensor</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>1 Live &amp; 2 Demo Accounts Included</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Rapid Basket Clearing Mechanism</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>FTMO &amp; FundedNext Challenge Certified</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Email &amp; Telegram Setup Support</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="GDAS EA - 3 Months ($300)" data-bot="gdas" data-price="300">
+                  Select 3 Months &bull; $300
+                </button>
+              </div>
+
+              <!-- 6 MONTHS (HIGHLY RECOMMENDED) -->
+              <div class="pricing-card-v2 gdas-featured">
+                <div class="pricing-badge-strip green">Highly Recommended</div>
+                <div class="tier-duration-title">6 Months</div>
+                <div class="tier-license-count green">2 MT4/MT5 Licenses</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$500</div>
+                  <span class="pricing-savings-pill">SAVE 72% &bull; Highly Recommended</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag green">Capital Defense</span>
+                  <span class="tier-micro-tag green">Stabilized Grid</span>
+                  <span class="tier-micro-tag green">Safeguard Sensor</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span><strong>2 Live MT4/MT5 Licenses</strong></span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Run on Live + Cent or Prop Firm simultaneously</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Safeguard Flash Crash Disconnect Sensors</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>1-on-1 VPS Setup Assistance</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="GDAS EA - 6 Months ($500)" data-bot="gdas" data-price="500">
+                  Select 6 Months &bull; $500
+                </button>
+              </div>
+
+              <!-- 1 YEAR (BEST VALUE) -->
+              <div class="pricing-card-v2 featured">
+                <div class="pricing-badge-strip">BEST VALUE</div>
+                <div class="tier-duration-title">1 Year</div>
+                <div class="tier-license-count green">4 MT4/MT5 Licenses</div>
+                <div class="pricing-price-wrap-v2">
+                  <div class="pricing-amount-huge">$1,000</div>
+                  <span class="pricing-savings-pill">SAVE 86% &bull; BEST VALUE</span>
+                </div>
+                <div class="pricing-badges-tags-row">
+                  <span class="tier-micro-tag green">Capital Defense</span>
+                  <span class="tier-micro-tag green">Stabilized Grid</span>
+                  <span class="tier-micro-tag green">Safeguard Sensor</span>
+                </div>
+                <ul class="pricing-features-v2">
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span><strong>4 Live MT4/MT5 Licenses (Full Suite)</strong></span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>All Future GDAS Presets &amp; Parameter Updates</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Dedicated VIP Support Concierge</span>
+                  </li>
+                  <li>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Remote White-Glove VPS Installation</span>
+                  </li>
+                </ul>
+                <button class="btn-pricing-v2 trigger-buy-flow" data-plan="GDAS EA - 1 Year ($1,000)" data-bot="gdas" data-price="1000">
+                  Get Full Suite &bull; $1,000
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Official Pricing Flyer Banner -->
+            <div class="pricing-flyer-banner">
+              <div class="pricing-flyer-info">
+                <img src="/assets/pricing-gdas.jpg" alt="GDAS EA Official Pricing Card" class="pricing-flyer-thumb" onclick="openFlyerModal('/assets/pricing-gdas.jpg')">
+                <div class="pricing-flyer-text">
+                  <h4>Official GDAS EA Professional Pricing Document</h4>
+                  <p>Target: Gold (XAUUSD) &bull; Low Risk &bull; Capital Preservation &bull; Powered by InvestmentsView</p>
+                </div>
+              </div>
+              <button class="btn-view-flyer" onclick="openFlyerModal('/assets/pricing-gdas.jpg')">
+                View Official Flyer ↗
+              </button>
+            </div>
+          </div>
+
+          <!-- PANEL 3: DUAL FLEET VIP PASS (BOTH BOTS INCLUDED) -->
+          <div id="pricing-panel-bundle" class="pricing-bot-panel" style="display: none;">
+            <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(15, 23, 42, 0.95)); border: 2px solid #a855f7; border-radius: var(--radius-lg); padding: 40px; box-shadow: 0 25px 80px rgba(0,0,0,0.8), 0 0 40px rgba(168, 85, 247, 0.25); max-width: 960px; margin: 0 auto;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap;">
+                <div>
+                  <span style="background: #a855f7; color: #ffffff; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: var(--radius-full); letter-spacing: 1.5px; text-transform: uppercase;">
+                    👑 ULTIMATE DUAL PASS
+                  </span>
+                  <h3 style="font-size: 28px; font-weight: 900; color: #ffffff; margin-top: 12px; margin-bottom: 6px;">
+                    Dual Fleet VIP Enterprise Bundle
+                  </h3>
+                  <p style="font-size: 15px; color: #cbd5e1; max-width: 580px; line-height: 1.6;">
+                    Run the perfect bar-bell strategy: deploy <strong>GDAS EA</strong> on your conservative/prop-firm accounts while running <strong>Velocity Runner EA</strong> for aggressive alpha generation.
+                  </p>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-size: 48px; font-weight: 900; color: #ffffff; line-height: 1;">$1,800</div>
+                  <div style="font-size: 13px; color: #22c55e; font-weight: 700; margin-top: 6px;">SAVE $400 (Combined Retail $2,200)</div>
+                  <div style="font-size: 12px; color: #94a3b8;">1-Year Unlimited All-Access Pass</div>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(200, 150, 88, 0.3); border-radius: 8px; padding: 18px;">
+                  <div style="font-size: 15px; font-weight: 800; color: var(--accent-gold); margin-bottom: 8px;">🔥 Velocity Runner EA (4 Licenses)</div>
+                  <div style="font-size: 13px; color: #94a3b8; line-height: 1.5;">High volatility momentum engine with dynamic escape runner decoupling and delta-neutral hedge recovery.</div>
+                </div>
+                <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; padding: 18px;">
+                  <div style="font-size: 15px; font-weight: 800; color: #22c55e; margin-bottom: 8px;">🛡️ GDAS EA (4 Licenses)</div>
+                  <div style="font-size: 13px; color: #94a3b8; line-height: 1.5;">Conservative capital defense algorithm with stabilized grid hedging and safeguard sensor crash protection.</div>
+                </div>
+              </div>
+
+              <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <div style="font-size: 13px; color: #cbd5e1; display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #22c55e;">✔</span> Includes 8 Live MT4/MT5 Licenses &bull; White-glove AnyDesk VPS Setup &bull; Private Telegram Concierge
+                </div>
+                <button class="btn-primary-gold trigger-buy-flow" data-plan="Dual Fleet VIP Enterprise Bundle - $1,800" data-bot="bundle" data-price="1800" style="padding: 14px 34px; font-size: 16px;">
+                  Activate Dual VIP Fleet &bull; $1,800
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+        </div>
+      </section>
+
+      <!-- Testimonials Section (Matches Tradivo Screenshot 4) -->
+      <section id="reviews" class="testimonials-section section-gold-spotlight">
+        <div class="container">
+          <div class="testimonials-header-row">
+            <h2 class="section-title">What Our Clients Say About Us?</h2>
+            <p class="section-subtitle">
+              Testimonials and success stories from traders running Velocity Runner EA on live and cent accounts.
+            </p>
+            <button class="btn-write-review">
+              Write a Review --&gt;
+            </button>
+          </div>
+
+          <div id="testimonials-grid" class="testimonials-grid">
+            <!-- Injected via JavaScript from /api/reviews -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions Section (Matches Tradivo Screenshot 2) -->
+      <section id="faq" class="faq-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Frequently Asked Question</h2>
+            <p class="section-subtitle">Everything you need to know about setting up and running Velocity Runner EA.</p>
+          </div>
+
+          <!-- 2 Columns Grid Matching Screenshot 2 Exactly -->
+          <div class="faq-columns-grid">
+            <!-- Left Column (6 Questions) -->
+            <div class="faq-column">
+              <!-- Question 1: Runaway Trend Defense (Official Institutional Quantitative FAQ) -->
+              <div class="faq-item active">
+                <button class="faq-question-btn">
+                  <span>How does this EA protect against sudden runaway trends on Gold?</span>
+                  <span class="faq-icon-circle">−</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Most automated systems fail because they treat all market moves the same way. The Velocity Grid Runner pairs continuous volatility filtering with a proprietary delta-neutral lock. When market expansion exceeds safe boundaries, exposure is neutralized until institutional exhaustion is confirmed, allowing the system to exit at equilibrium rather than suffering large drawdowns.</p>
+                </div>
+              </div>
+
+              <!-- Question 2: Account Leverage (Official Institutional Quantitative FAQ) -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>Does it require high account leverage?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>The system is designed to maximize capital efficiency on standard retail hedging accounts. Because exposure is managed through dynamic equilibrium scaling and rapid basket turnover, it avoids the hyper-leveraged exposure typical of legacy systems.</p>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>Where can I download the EA and presets?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Two places: the instant thank-you page after checkout and the confirmation email. Both include the complete bundle &mdash; the EA file (.ex4/.ex5), verified .set configuration presets, and an installation PDF guide.</p>
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>What is the minimum recommended balance?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>For standard ECN accounts, we recommend starting with $500 on conservative presets, or on a USC/Cent account with as little as $50 ($5,000 USC). For prop firm challenges (FTMO, FundedNext), accounts of $10,000 to $200,000+ are fully supported using the Prop Firm Safe preset.</p>
+                </div>
+              </div>
+
+              <!-- Question 5 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>When will I receive my activation license?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Activation is instant. As soon as your order completes, your unique license key is generated on screen and dispatched to your email address within seconds.</p>
+                </div>
+              </div>
+
+              <!-- Question 6 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>Is there a money-back guarantee?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes, we offer a 14-day performance guarantee. If the EA fails to perform according to our verified backtesting standards on a demo or live account following the provided setup guide, our support desk will provide a full refund.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column (6 Questions) -->
+            <div class="faq-column">
+              <!-- Question 7: GDAS vs Velocity Runner Difference -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>What is the difference between GDAS EA and Velocity Runner EA?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p><strong>GDAS EA (Gold Digger Account Saver)</strong> is our low-risk, low-drawdown (&lt;3.2%) bot engineered with capital defense, stabilized grid hedging, and safeguard sensor crash breakers designed to clear positions quickly. <strong>Velocity Runner EA</strong> is our high-volatility, maximum-profit engine with dynamic escape momentum runners and delta-neutral recovery designed for higher reward.</p>
+                </div>
+              </div>
+
+              <!-- Question 8 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>Can I run other EAs with Velocity Runner on the same account?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes. Both Velocity Runner EA and GDAS EA use unique Magic Number identification tags for every trade. They never interfere with manual orders or other trading robots running on the same MT4/MT5 terminal.</p>
+                </div>
+              </div>
+
+              <!-- Question 9 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>Which pair / timeframe works better for this Forex Trading Bot?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Both bots are optimized primarily for <strong>XAUUSD (Gold)</strong> on the M15 timeframe. Velocity Runner also supports EURUSD and GBPUSD on M5 and M15 for traders wanting multi-currency diversification.</p>
+                </div>
+              </div>
+
+              <!-- Question 10 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>When should we run the Bot?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>We recommend running the bot 24/5 on a reliable Virtual Private Server (VPS). The built-in session timer automatically executes during peak London &amp; New York volume hours and safely hibernates during low liquidity roll-overs.</p>
+                </div>
+              </div>
+
+              <!-- Question 11 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>Will the bot work the same way on my account as your investor account?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes, provided you choose an ECN or Raw Spread broker with low spreads and fast VPS execution (&lt;20ms). Slippage and spread differences are minimized by the algorithm's slippage control filter.</p>
+                </div>
+              </div>
+
+              <!-- Question 12 -->
+              <div class="faq-item">
+                <button class="faq-question-btn">
+                  <span>Any other questions?</span>
+                  <span class="faq-icon-circle">+</span>
+                </button>
+                <div class="faq-answer">
+                  <p>Our dedicated trading support team is available 24/7. Reach out through the contact form below or contact our Telegram VIP desk directly at @investmentsview_support.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Support & Contact Form Section (Matches Tradivo Screenshot 3) -->
+      <section id="contact" class="contact-section section-gold-spotlight-left">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">We're Here to Support Your Trading Success</h2>
+            <p class="section-subtitle">Our Forex Trading Bot's dedicated support team will reach you very soon</p>
+          </div>
+
+          <div class="contact-layout">
+            <!-- Left Info Column (Matches Screenshot 3) -->
+            <div class="contact-info-col">
+              <h3>Ready to Automate Your Forex Trading?</h3>
+              <p>
+                Discover what Velocity Runner EA can do for your trading. Our team is ready to help you set up, fine-tune, and get the most out of every basket cycle.
+              </p>
+
+              <div class="support-perks-list">
+                <div class="support-perk-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>24/7 Priority Desk Support (Telegram &amp; Email)</span>
+                </div>
+                <div class="support-perk-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  <span>Remote TeamViewer / AnyDesk Setup Assistance</span>
+                </div>
+                <div class="support-perk-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>Official Domain: <strong>investmentsview.de</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Dark Contact Form (Matches Screenshot 3) -->
+            <div class="contact-form-box">
+              <form id="contact-form">
+                <div class="form-field-group">
+                  <label for="contact-name" class="form-label">NAME *</label>
+                  <input type="text" id="contact-name" class="form-input" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-field-group">
+                  <label for="contact-email" class="form-label">EMAIL *</label>
+                  <input type="email" id="contact-email" class="form-input" placeholder="Your email address" required>
+                </div>
+
+                <div class="form-field-group">
+                  <label for="contact-message" class="form-label">MESSAGE *</label>
+                  <textarea id="contact-message" class="form-textarea" placeholder="How can our trading desk assist you today?" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-form-send">
+                  Send
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Tradivo Signature 3D Golden Curved Ribbon (Matches Screenshot 3) -->
+          <div class="tradivo-golden-ribbon bottom">
+            <div class="ribbon-glow"></div>
+            <svg viewBox="0 0 1440 52" fill="none" preserveAspectRatio="none">
+              <path d="M0,8 Q720,24 1440,8 L1440,16 Q720,32 0,16 Z" fill="url(#goldRibbonTier1)"/>
+              <path d="M0,16 Q720,32 1440,16 L1440,34 Q720,50 0,34 Z" fill="url(#goldRibbonTier2)"/>
+              <path d="M0,34 Q720,50 1440,34 L1440,42 Q720,58 0,42 Z" fill="url(#goldRibbonTier3)"/>
+            </svg>
+          </div>
+
+          <!-- Payment Methods Accepted Strip (Matches Screenshot 3 bottom) -->
+          <div class="payment-methods-strip">
+            <div class="payment-strip-title">We accept payment methods</div>
+            <div class="payment-badges-row">
+              <span class="payment-pill">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#26a17b"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.93V18h-2v-1.07c-2.3-.23-4-1.28-4-3.43h2.5c0 1.13.9 1.75 2.5 1.75 1.48 0 2.5-.66 2.5-1.65 0-.9-.72-1.4-2.52-1.78l-1.3-.28C8.5 11.08 7 9.8 7 7.75c0-1.95 1.5-3.08 3.5-3.35V3h2v1.4c2.05.27 3.5 1.4 3.5 3.1h-2.5c0-.98-.75-1.5-2-1.5-1.3 0-2 .6-2 1.4 0 .78.6 1.25 2.1 1.57l1.3.28c2.4.52 3.6 1.7 3.6 3.8 0 2.1-1.6 3.23-3.5 3.43z"/></svg>
+                USDT (TRC20 &amp; ERC20)
+              </span>
+              <span class="payment-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#f7931a"><path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.243 14.9.358c6.43 1.605 10.342 8.115 8.738 14.548v-.002zm-6.35-4.613c.24-1.59-.97-2.45-2.64-3.03l.54-2.15-1.3-.33-.53 2.1c-.34-.09-.7-.17-1.05-.25l.53-2.12-1.3-.33-.54 2.16c-.28-.06-.56-.13-.82-.2l-1.8-.45-.35 1.4s.97.22.95.24c.53.13.63.48.61.76l-.61 2.47c.04.01.08.02.13.04-.04-.01-.09-.03-.13-.04l-.86 3.47c-.06.16-.23.41-.6.31.02.02-.95-.24-.95-.24l-.65 1.52 1.7.42c.32.08.63.17.93.25l-.55 2.2 1.3.33.54-2.16c.36.1.7.19 1.05.28l-.54 2.17 1.3.32.55-2.2c2.23.42 3.91.25 4.62-1.76.57-1.63-.03-2.57-1.2-3.19.86-.2 1.5-.77 1.68-1.95zm-3 4.24c-.4 1.63-3.13.75-4.01.53l.72-2.87c.88.22 3.7.66 3.29 2.34zm.4-4.26c-.37 1.48-2.64.73-3.38.54l.65-2.61c.74.19 3.1.53 2.73 2.07z"/></svg>
+                Bitcoin (BTC)
+              </span>
+              <span class="payment-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#1434CB"><path d="M2.5 4h19a1.5 1.5 0 0 1 1.5 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-19A1.5 1.5 0 0 1 1 18.5v-13A1.5 1.5 0 0 1 2.5 4zm0 3v11.5h19V7H2.5zm3 6h4v2h-4v-2z"/></svg>
+                Visa
+              </span>
+              <span class="payment-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#EB001B"><circle cx="8" cy="12" r="6" fill="#EB001B"/><circle cx="16" cy="12" r="6" fill="#F79E1B" fill-opacity="0.8"/></svg>
+                Mastercard
+              </span>
+              <span class="payment-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.79.79 0 0 1 .779-.652h7.027c2.32 0 4.148.54 5.293 1.56 1.056.938 1.48 2.28 1.258 3.987-.417 3.21-2.585 5.093-5.795 5.093H9.76l-1.328 6.94a.79.79 0 0 1-.778.689h-.578z"/></svg>
+                PayPal
+              </span>
+              <span class="payment-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.64-.78 1.08-1.86.96-2.95-1 .04-2.16.66-2.82 1.43-.59.68-1.1 1.77-.96 2.83 1.12.09 2.23-.58 2.82-1.31z"/></svg>
+                Apple Pay
+              </span>
+              <span class="payment-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#c89658"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4v10h16V8H4zm2 2h4v2H6v-2z"/></svg>
+                SEPA Instant Transfer
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Area (Investmentsview.de branding & German/EU compliance) -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top-grid">
+          <div class="footer-brand-col">
+            <a href="#home" class="brand-logo">
+              <img src="/assets/logo.png" alt="InvestmentsView — Algorithmic Systems" class="site-footer-logo">
+            </a>
+            <p>
+              Velocity Runner EA is an institutional algorithmic execution suite owned and distributed exclusively by investmentsview.de.
+            </p>
+            <div style="font-size: 12px; color: #94a3b8;">
+              Server Location: Frankfurt (FRA-1), Germany
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Navigation</h4>
+            <ul class="footer-links-list">
+              <li><a href="#home">Home Overview</a></li>
+              <li><a href="#architecture">Execution Architecture</a></li>
+              <li><a href="#description">Investor Accounts</a></li>
+              <li><a href="#gallery">EAs Fleet Gallery</a></li>
+              <li><a href="#prices">Pricing Packages</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Resources</h4>
+            <ul class="footer-links-list">
+              <li><a href="/api/download/preset">Download MT5 Presets</a></li>
+              <li><a href="#faq">Frequently Asked Questions</a></li>
+              <li><a href="#reviews">Verified Trader Reviews</a></li>
+              <li><a href="#contact">Contact Support Desk</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Compliance</h4>
+            <ul class="footer-links-list">
+              <li><a href="#disclaimer">Risk Disclosure (ESMA)</a></li>
+              <li><a href="#disclaimer">Terms of Service</a></li>
+              <li><a href="#disclaimer">Privacy Policy (DSGVO)</a></li>
+              <li><a href="#disclaimer">Impressum (Germany)</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Risk Disclaimer Notice -->
+        <div id="disclaimer" class="risk-disclaimer-card">
+          <strong>HIGH-RISK INVESTMENT WARNING &amp; COMPLIANCE DISCLOSURE:</strong> Trading foreign exchange (Forex) and Contracts for Difference (CFDs) on margin carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade Forex, Gold (XAUUSD), or automate strategies using Velocity Runner EA, you should carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment and therefore you should not invest money that you cannot afford to lose. Past performance of any trading system or methodology is not necessarily indicative of future results. Investmentsview.de does not provide personalized investment advice or asset management services.
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>
+            &copy; 2026 investmentsview.de &bull; Velocity Runner EA. All rights reserved.
+          </div>
+          <div style="display: flex; gap: 16px; font-size: 12px;">
+            <span>Domain: investmentsview.de</span>
+            <span>Version: v4.5 Enterprise</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating VIP Desk Chat Launcher -->
+    <div class="floating-vip-chat">
+      <div id="vip-chat-drawer" class="vip-drawer">
+        <div class="vip-drawer-header">
+          <span class="vip-drawer-title">⚡ VIP Trading Desk</span>
+          <button id="vip-drawer-close" class="vip-drawer-close">&times;</button>
+        </div>
+        <p style="font-size: 13px; color: #94a3b8; margin-bottom: 14px;">Instant answers from our algorithmic team:</p>
+        <div class="vip-preset-chips">
+          <button class="vip-chip-btn" data-q="prop">🛡️ Does it pass FTMO / Prop Firms?</button>
+          <button class="vip-chip-btn" data-q="min">💰 What is the minimum deposit?</button>
+          <button class="vip-chip-btn" data-q="telegram">💬 Open Live Telegram Desk</button>
+        </div>
+        <a href="https://t.me/investmentsview_support" target="_blank" class="btn-primary-gold" style="width: 100%; justify-content: center; font-size: 13px; padding: 10px;">
+          Connect on Telegram (@investmentsview_support)
+        </a>
+      </div>
+
+      <button id="vip-chat-trigger" class="vip-chat-trigger-btn">
+        <span style="color: #22c55e;">●</span>
+        <span>VIP Desk • Online</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+
+  <!-- 2. Write a Review Modal (Matches Tradivo Screenshot 4) -->
+  <div id="modal-review" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div style="margin-bottom: 20px;">
+        <span style="color: var(--accent-gold); font-size: 12px; font-weight: 700; text-transform: uppercase;">Community Feedback</span>
+        <h3 style="color: #ffffff; font-size: 22px; font-weight: 800; margin-top: 4px;">Write a Review</h3>
+        <p style="color: #94a3b8; font-size: 13.5px; margin-top: 4px;">Share your trading journey running Velocity Runner EA.</p>
+      </div>
+
+      <form id="form-submit-review">
+        <div class="form-field-group">
+          <label class="form-label">YOUR RATING *</label>
+          <div class="star-rating-select">
+            <button type="button" data-rating="1" class="selected">★</button>
+            <button type="button" data-rating="2" class="selected">★</button>
+            <button type="button" data-rating="3" class="selected">★</button>
+            <button type="button" data-rating="4" class="selected">★</button>
+            <button type="button" data-rating="5" class="selected">★</button>
+          </div>
+        </div>
+
+        <div class="form-field-group">
+          <label for="review-name" class="form-label">YOUR NAME *</label>
+          <input type="text" id="review-name" class="form-input" placeholder="e.g. Abhay B. or Dr. Hiremath" required>
+        </div>
+
+        <div class="form-field-group">
+          <label for="review-email" class="form-label">EMAIL ADDRESS *</label>
+          <input type="email" id="review-email" class="form-input" placeholder="For verification purpose only (never published)" required>
+        </div>
+
+        <div class="form-field-group">
+          <label for="review-account" class="form-label">ACCOUNT TYPE / BROKER</label>
+          <input type="text" id="review-account" class="form-input" placeholder="e.g. FTMO $100k, IC Markets Raw Spread, Exness">
+        </div>
+
+        <div class="form-field-group">
+          <label for="review-content" class="form-label">REVIEW DETAILS *</label>
+          <textarea id="review-content" class="form-textarea" placeholder="Describe your experience with the robot, win rate, gold volatility protection, or support team..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary-gold" style="width: 100%; justify-content: center; padding: 14px;">
+          Post Verified Review
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Ultra-Luxury Two-Column Institutional Checkout Modal -->
+  <div id="modal-checkout" class="modal-overlay">
+    <div class="modal-box checkout-modal-wrapper">
+      <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div class="checkout-split-grid">
+        <!-- Left Column: Order Summary & Guarantees -->
+        <div class="checkout-summary-panel">
+          <div>
+            <div class="checkout-brand-header">
+              <span class="checkout-brand-title">INVESTMENTSVIEW.DE • CHECKOUT</span>
+              <span class="checkout-ssl-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                256-Bit SSL
+              </span>
+            </div>
+
+            <!-- Product Spotlight -->
+            <div class="checkout-product-preview">
+              <img id="summary-product-img" src="/assets/box-velocity-runner.jpg" alt="Velocity Runner EA" class="checkout-product-img">
+              <div class="checkout-product-info">
+                <span id="summary-tier-badge" class="tier-tag">1 Month &bull; Standard</span>
+                <h4 id="summary-product-name">Velocity Runner EA</h4>
+                <div class="desc">Institutional quantitative trading engine for Gold (XAUUSD). Dynamic escape &amp; delta-neutral recovery.</div>
+              </div>
+            </div>
+
+            <!-- Urgency Countdown Banner -->
+            <div class="checkout-urgency-banner">
+              <span>🔥 50% Launch Discount active:</span>
+              <span id="checkout-countdown" class="timer-val">14:59</span>
+            </div>
+
+            <!-- Price Breakdown Line Items -->
+            <div class="checkout-line-items">
+              <div class="line-item-row">
+                <span>Standard License Retail:</span>
+                <span id="summary-base-price">$400.00</span>
+              </div>
+              <div class="line-item-row">
+                <span>Prop-Firm Phase 1 &amp; 2 Set Files:</span>
+                <span style="color: #22c55e;">FREE ($199 value)</span>
+              </div>
+              <div class="line-item-row">
+                <span>VIP Telegram Signals &amp; Priority Desk:</span>
+                <span style="color: #22c55e;">FREE (Lifetime)</span>
+              </div>
+              <div class="line-item-row discount">
+                <span>Special Promotion Discount:</span>
+                <span id="summary-discount-val">-$200.00</span>
+              </div>
+              <div id="summary-voucher-row" class="line-item-row discount" style="display: none;">
+                <span id="summary-voucher-label">Voucher Applied:</span>
+                <span id="summary-voucher-amount">-$0.00</span>
+              </div>
+              <div class="line-item-total">
+                <span>Total Due Today:</span>
+                <div id="summary-total-price" class="total-amount">$200.00</div>
+              </div>
+            </div>
+
+            <!-- Verified Trader Quote -->
+            <div class="checkout-quote-snippet">
+              "Passed my FTMO Phase 1 &amp; 2 challenge in 18 trading days using the Conservative preset. Max drawdown never exceeded 3.2%."
+              <strong>— Maximilian B., Verified Funded Trader (Germany)</strong>
+            </div>
+          </div>
+
+          <!-- Bottom Security Guarantees -->
+          <div class="checkout-guarantee-row">
+            <div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>14-Day Guarantee</span>
+            </div>
+            <div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Instant Activation</span>
+            </div>
+            <div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              <span>Zero Hidden Fees</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Payment & Trader Terminal -->
+        <div class="checkout-payment-panel">
+          <form id="form-checkout">
+            <input type="hidden" id="checkout-plan-name" value="Pro Trader License - €249">
+            <input type="hidden" id="checkout-base-amount" value="249">
+
+            <div>
+              <h3 class="checkout-panel-title">Complete Your Order</h3>
+              <p class="checkout-panel-subtitle">Immediate automated license dispatch and MT4/MT5 preset download.</p>
+
+              <!-- Step 1: Platform Selection -->
+              <div class="input-label-sleek">1. SELECT YOUR TRADING PLATFORM *</div>
+              <div class="platform-selector-grid">
+                <div class="platform-tile active" data-platform="MetaTrader 5 (MT5)">
+                  <div class="platform-icon-box">MT5</div>
+                  <div class="platform-meta">
+                    <div class="title">MetaTrader 5</div>
+                    <div class="badge">Recommended • Ultra Fast</div>
+                  </div>
+                </div>
+                <div class="platform-tile" data-platform="MetaTrader 4 (MT4)">
+                  <div class="platform-icon-box">MT4</div>
+                  <div class="platform-meta">
+                    <div class="title">MetaTrader 4</div>
+                    <div class="badge" style="color: #94a3b8;">Legacy Support</div>
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" id="checkout-platform-val" value="MetaTrader 5 (MT5)">
+
+              <!-- Step 2: Trader Details -->
+              <div class="input-label-sleek">2. TRADER CREDENTIALS *</div>
+              <div class="trader-inputs-grid">
+                <div class="trader-input-field">
+                  <label for="checkout-name" class="input-label-sleek" style="font-size: 10px;">Full Name *</label>
+                  <input type="text" id="checkout-name" class="input-sleek" placeholder="e.g. Alex Morgan" required>
+                </div>
+                <div class="trader-input-field">
+                  <label for="checkout-broker" class="input-label-sleek" style="font-size: 10px;">Broker / Prop Firm</label>
+                  <input type="text" id="checkout-broker" class="input-sleek" placeholder="e.g. FTMO, IC Markets">
+                </div>
+                <div class="trader-input-field full">
+                  <label for="checkout-email" class="input-label-sleek" style="font-size: 10px;">Email Address (License Dispatched Here) *</label>
+                  <input type="email" id="checkout-email" class="input-sleek" placeholder="alex@tradingfirm.com" required>
+                </div>
+              </div>
+
+              <!-- Step 3: Payment Method Tabs -->
+              <div class="input-label-sleek">3. PAYMENT METHOD *</div>
+              <div class="payment-tabs-nav">
+                <div class="pay-tab-btn active" data-tab="card">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                  <span>Credit Card</span>
+                </div>
+                <div class="pay-tab-btn" data-tab="crypto">
+                  <svg viewBox="0 0 24 24" fill="#26a17b"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.93V18h-2v-1.07c-2.3-.23-4-1.28-4-3.43h2.5c0 1.13.9 1.75 2.5 1.75 1.48 0 2.5-.66 2.5-1.65 0-.9-.72-1.4-2.52-1.78l-1.3-.28C8.5 11.08 7 9.8 7 7.75c0-1.95 1.5-3.08 3.5-3.35V3h2v1.4c2.05.27 3.5 1.4 3.5 3.1h-2.5c0-.98-.75-1.5-2-1.5-1.3 0-2 .6-2 1.4 0 .78.6 1.25 2.1 1.57l1.3.28c2.4.52 3.6 1.7 3.6 3.8 0 2.1-1.6 3.23-3.5 3.43z"/></svg>
+                  <span>Crypto (USDT)</span>
+                </div>
+                <div class="pay-tab-btn" data-tab="sepa">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4v10h16V8H4zm2 2h4v2H6v-2z"/></svg>
+                  <span>SEPA / Bank</span>
+                </div>
+                <div class="pay-tab-btn" data-tab="paypal">
+                  <svg viewBox="0 0 24 24" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.79.79 0 0 1 .779-.652h7.027c2.32 0 4.148.54 5.293 1.56 1.056.938 1.48 2.28 1.258 3.987-.417 3.21-2.585 5.093-5.795 5.093H9.76l-1.328 6.94a.79.79 0 0 1-.778.689h-.578z"/></svg>
+                  <span>PayPal</span>
+                </div>
+              </div>
+
+              <!-- Payment Pane 1: Credit / Debit Card -->
+              <div id="pane-card" class="pay-pane active">
+                <!-- Interactive 3D Card Mockup -->
+                <div class="card-visual-mockup">
+                  <div class="card-mockup-top">
+                    <div class="card-chip"></div>
+                    <div style="font-size: 14px; font-weight: 800; color: #cbd5e1; font-family: monospace;">VISA / MASTERCARD</div>
+                  </div>
+                  <div id="card-mock-number" class="card-number-display">•••• •••• •••• 4242</div>
+                  <div class="card-mockup-bottom">
+                    <div>
+                      <div style="font-size: 9px; text-transform: uppercase;">Cardholder</div>
+                      <div id="card-mock-holder" class="holder">ALEX MORGAN</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 9px; text-transform: uppercase;">Expires</div>
+                      <div id="card-mock-expiry" class="holder">12/28</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-inputs-row">
+                  <div>
+                    <label class="input-label-sleek" style="font-size: 10px;">Card Number</label>
+                    <input type="text" id="input-card-number" class="input-sleek" placeholder="4242 •••• •••• 4242" maxlength="19">
+                  </div>
+                  <div>
+                    <label class="input-label-sleek" style="font-size: 10px;">MM / YY</label>
+                    <input type="text" id="input-card-expiry" class="input-sleek" placeholder="12/28" maxlength="5">
+                  </div>
+                  <div>
+                    <label class="input-label-sleek" style="font-size: 10px;">CVC / CVV</label>
+                    <input type="password" id="input-card-cvc" class="input-sleek" placeholder="•••" maxlength="4">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment Pane 2: Crypto (USDT / BTC) -->
+              <div id="pane-crypto" class="pay-pane">
+                <div class="crypto-terminal-box">
+                  <div class="crypto-qr-container">
+                    <!-- Clean SVG QR Code -->
+                    <svg viewBox="0 0 100 100" fill="#000000">
+                      <rect x="0" y="0" width="28" height="28" fill="#000"/>
+                      <rect x="4" y="4" width="20" height="20" fill="#fff"/>
+                      <rect x="8" y="8" width="12" height="12" fill="#000"/>
+                      <rect x="72" y="0" width="28" height="28" fill="#000"/>
+                      <rect x="76" y="4" width="20" height="20" fill="#fff"/>
+                      <rect x="80" y="8" width="12" height="12" fill="#000"/>
+                      <rect x="0" y="72" width="28" height="28" fill="#000"/>
+                      <rect x="4" y="76" width="20" height="20" fill="#fff"/>
+                      <rect x="8" y="80" width="12" height="12" fill="#000"/>
+                      <rect x="36" y="8" width="8" height="8" fill="#000"/>
+                      <rect x="52" y="8" width="8" height="8" fill="#000"/>
+                      <rect x="36" y="24" width="8" height="8" fill="#000"/>
+                      <rect x="44" y="36" width="12" height="12" fill="#000"/>
+                      <rect x="64" y="44" width="8" height="8" fill="#000"/>
+                      <rect x="36" y="56" width="8" height="8" fill="#000"/>
+                      <rect x="56" y="72" width="12" height="12" fill="#000"/>
+                      <rect x="76" y="64" width="8" height="8" fill="#000"/>
+                      <rect x="44" y="84" width="8" height="8" fill="#000"/>
+                    </svg>
+                  </div>
+                  <div class="crypto-details-col">
+                    <div class="crypto-net-select-row">
+                      <button type="button" class="crypto-net-btn active" data-addr="TQ3aZpB2WkM99xL7vC8bYmNqJ6sU1dE4tR" data-net="USDT (TRC20)">USDT TRC20</button>
+                      <button type="button" class="crypto-net-btn" data-addr="0x71C...4eB91B89" data-net="USDT (ERC20)">USDT ERC20</button>
+                      <button type="button" class="crypto-net-btn" data-addr="bc1q9v8h27m6u5w4t3s2r1q0p9o8n7m6l5k4j3" data-net="Bitcoin (BTC)">BTC</button>
+                    </div>
+                    <div style="font-size: 11px; color: #94a3b8; margin-bottom: 4px;">Send payment to official merchant vault:</div>
+                    <div class="crypto-address-box">
+                      <span id="crypto-current-address" class="crypto-address-text">TQ3aZpB2WkM99xL7vC8bYmNqJ6sU1dE4tR</span>
+                      <button type="button" id="btn-copy-crypto-addr" class="btn-copy-address">Copy</button>
+                    </div>
+                    <div style="font-size: 10px; color: #22c55e; margin-top: 6px;">● Instant Blockchain Confirmation • 0% Merchant Fees</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment Pane 3: SEPA Instant -->
+              <div id="pane-sepa" class="pay-pane">
+                <div class="alt-pay-box">
+                  <strong>SEPA Instant Bank Transfer (EUR)</strong><br>
+                  Dedicated to European &amp; German clients of <strong>investmentsview.de</strong>.<br>
+                  IBAN: <code>DE89 5001 0517 5408 2931 00</code><br>
+                  BIC: <code>MARKDEF1FRA</code> &bull; Bank: Frankfurt Trade Bank AG<br>
+                  Reference: <code>VRUNNER-<span id="sepa-ref-code">88F2</span></code> (License key auto-dispatched upon reception).
+                </div>
+              </div>
+
+              <!-- Payment Pane 4: PayPal -->
+              <div id="pane-paypal" class="pay-pane">
+                <div class="alt-pay-box" style="text-align: center;">
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="#003087" style="margin-bottom: 8px;"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.79.79 0 0 1 .779-.652h7.027c2.32 0 4.148.54 5.293 1.56 1.056.938 1.48 2.28 1.258 3.987-.417 3.21-2.585 5.093-5.795 5.093H9.76l-1.328 6.94a.79.79 0 0 1-.778.689h-.578z"/></svg><br>
+                  Click below to proceed securely via PayPal Express Checkout with Buyer Protection.
+                </div>
+              </div>
+
+              <!-- Voucher Promo Code -->
+              <div class="voucher-form-row">
+                <input type="text" id="voucher-input" class="voucher-input" placeholder="DISCOUNT / PROMO CODE (e.g. VELOCITY20)">
+                <button type="button" id="btn-apply-voucher" class="voucher-btn">Apply</button>
+              </div>
+
+              <!-- Checkout Submit Button -->
+              <button type="submit" id="btn-submit-checkout-main" class="btn-checkout-execute">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Pay $200.00 &amp; Activate License</span>
+              </button>
+
+              <div class="checkout-micro-trust">
+                🔒 256-Bit Bank Grade SSL Encryption &bull; Licensed by investmentsview.de &bull; Instant Delivery
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-Resolution Flyer Lightbox Modal -->
+  <div id="flyer-modal" class="flyer-modal-backdrop" onclick="closeFlyerModal(event)">
+    <div class="flyer-modal-content" onclick="event.stopPropagation()">
+      <button class="flyer-modal-close" onclick="closeFlyerModal(event)">&times;</button>
+      <img id="flyer-modal-img" src="/assets/pricing-velocity.jpg" alt="Official Pricing Flyer" class="flyer-modal-img">
+    </div>
+  </div>
+
+  <!-- Tradivo Grounded Glowing Horizon Floor -->
+  <div class="golden-horizon-floor"></div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container"></div>
+
+  <!-- Application Script (Cache Busted) -->
+  <script src="/js/app.js?v=9.0"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+[
+  {
+    "id": "velocity-runner-pro",
+    "status": "current",
+    "name": "Velocity Runner EA",
+    "badge": "High Volatility • Maximum Profit",
+    "version": "v4.5 Enterprise Pro",
+    "pairs": "XAUUSD (Gold Specialist), EURUSD, GBPUSD",
+    "timeframe": "M5 / M15 / H1",
+    "image": "/assets/box-velocity-runner.jpg",
+    "pricingImage": "/assets/pricing-velocity.jpg",
+    "description": "Next-Generation Quantitative Execution Engine for Gold (XAU/USD). High volatility, maximum profit algorithm featuring Dynamic Escape, Volatility Runner breakout momentum isolation, and Delta-Neutral Smart Recovery.",
+    "features": [
+      "Dynamic Escape & Volatility Runner momentum isolation",
+      "Proprietary Delta-Neutral hedge recovery & zero-loss exit",
+      "Bidirectional liquidity harvesting with unified basket equilibrium",
+      "Live Tactical HUD Dashboard rendered directly on chart",
+      "Disaster-resilient binary state persistence & crash safe"
+    ],
+    "pricing": {
+      "oneMonth": { "price": "$200", "licenses": "1 MT4/MT5 License", "savings": "Standard Rate" },
+      "threeMonths": { "price": "$400", "licenses": "1 MT4/MT5 License", "savings": "SAVE 33%" },
+      "sixMonths": { "price": "$700", "licenses": "2 MT4/MT5 Licenses", "savings": "SAVE 71%" },
+      "oneYear": { "price": "$1,200", "licenses": "4 MT4/MT5 Licenses", "savings": "SAVE 88% • BEST VALUE" }
+    },
+    "price": "$200",
+    "originalPrice": "$400",
+    "priceDisplay": "From $200 / Month",
+    "downloadUrl": "#prices",
+    "isAvailable": true
+  },
+  {
+    "id": "gdas-gold-digger",
+    "status": "current",
+    "name": "GDAS EA — Gold Digger Account Saver",
+    "badge": "Low Risk • Capital Preservation",
+    "version": "v3.8 Pro Edition",
+    "pairs": "XAUUSD (Gold Specialist)",
+    "timeframe": "M15 / H1",
+    "image": "/assets/box-gdas-ea.jpg",
+    "pricingImage": "/assets/pricing-gdas.jpg",
+    "description": "Low risk, low drawdown capital defense algorithm for Gold (XAUUSD). Engineered to clear positions fast with stabilized grid hedging, safeguard sensor circuit breakers, and institutional prop-firm challenge compliance.",
+    "features": [
+      "Capital Defense & institutional account preservation shield",
+      "Stabilized Grid algorithm with rapid basket clearing cycles",
+      "Safeguard Sensor circuit breaker against flash crashes",
+      "Max drawdown strictly capped < 3.2% (FTMO & Prop-Firm Safe)",
+      "Plug-and-play verified MT4 & MT5 .set presets included"
+    ],
+    "pricing": {
+      "oneMonth": { "price": "$150", "licenses": "1 MT4/MT5 License", "savings": "Standard Rate" },
+      "threeMonths": { "price": "$300", "licenses": "1 MT4/MT5 License", "savings": "SAVE 33%" },
+      "sixMonths": { "price": "$500", "licenses": "2 MT4/MT5 Licenses", "savings": "SAVE 72% • Highly Recommended" },
+      "oneYear": { "price": "$1,000", "licenses": "4 MT4/MT5 Licenses", "savings": "SAVE 86% • BEST VALUE" }
+    },
+    "price": "$150",
+    "originalPrice": "$300",
+    "priceDisplay": "From $150 / Month",
+    "downloadUrl": "#prices",
+    "isAvailable": true
+  },
+  {
+    "id": "velocity-quantum-grid",
+    "status": "upcoming",
+    "name": "Velocity Quantum AI EA",
+    "badge": "Next-Gen AI (Q2 2026)",
+    "version": "v1.0 Beta",
+    "pairs": "Multi-Asset (Forex, Gold, Indices)",
+    "timeframe": "Multi-Timeframe Neural",
+    "image": "/assets/box-velocity-quantum.svg",
+    "description": "Next-generation statistical arbitrage and institutional momentum capture algorithm powered by real-time order-book sentiment and macroeconomic volatility heatmaps.",
+    "features": [
+      "Machine-learning price action pattern recognition",
+      "Multi-currency correlation hedging mode",
+      "Institutional order flow imbalance detection",
+      "Ultra-low latency VPS execution engine"
+    ],
+    "price": "Waitlist Open",
+    "originalPrice": "$799",
+    "downloadUrl": "#waitlist",
+    "isAvailable": false
+  },
+  {
+    "id": "velocity-scalper-v3",
+    "status": "past",
+    "name": "Velocity Scalper v3.2 Legacy",
+    "badge": "Archived Release",
+    "version": "v3.2",
+    "pairs": "EURUSD, GBPUSD",
+    "timeframe": "M1 / M5",
+    "image": "/assets/box-velocity-legacy.svg",
+    "description": "Our proven Asian session range breakout bot. Actively ran from 2024-2025 with an average +310% verified track record before being superseded by the multi-session Velocity Runner architecture.",
+    "features": [
+      "Asian session range compression breakout",
+      "Micro-lot scalp targeting 8-15 pips per cycle",
+      "Legacy MT4 compatibility pack included"
+    ],
+    "price": "Archived",
+    "originalPrice": "$199",
+    "downloadUrl": "#archived",
+    "isAvailable": false
+  },
+  {
+    "id": "velocity-breakout-v2",
+    "status": "past",
+    "name": "Velocity Breakout Hunter v2.8",
+    "badge": "Archived Release",
+    "version": "v2.8",
+    "pairs": "GBPUSD, USDJPY",
+    "timeframe": "M15",
+    "image": "/assets/box-velocity-legacy2.svg",
+    "description": "London session volatility impulse capture algorithm. Formed the foundational high-frequency trailing stop module now integrated into Velocity Runner EA.",
+    "features": [
+      "London Open breakout box algorithm",
+      "Fixed reward-to-risk ratio 1:2.5",
+      "Complete historical backtest logs available"
+    ],
+    "price": "Archived",
+    "originalPrice": "$149",
+    "downloadUrl": "#archived",
+    "isAvailable": false
+  }
+]

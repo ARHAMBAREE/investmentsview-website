@@ -1,0 +1,63 @@
+[
+  {
+    "id": "rev-1794064432598",
+    "name": "Florian Weber",
+    "email": "",
+    "initial": "F",
+    "rating": 5,
+    "role": "Verified Trader",
+    "accountType": "Live IC Markets MT5",
+    "date": "Just now",
+    "content": "Outstanding performance on my live IC Markets account. Velocity Runner has been running non-stop for 3 weeks with +34.2% profit!"
+  },
+  {
+    "id": "rev-1",
+    "name": "Abhay Booter",
+    "initial": "A",
+    "rating": 5,
+    "role": "Verified Live Trader",
+    "accountType": "Live Account (IC Markets)",
+    "date": "2 days ago",
+    "content": "Good experience so far. Satisfied with the Velocity Runner Robot. The gold volatility spikes are managed with extreme precision and the trailing stop logic locked in solid gains during London session."
+  },
+  {
+    "id": "rev-2",
+    "name": "Dr Satesh Hiremath",
+    "initial": "D",
+    "rating": 5,
+    "role": "Verified Cent & Raw Trader",
+    "accountType": "Raw Spread MT5",
+    "date": "5 days ago",
+    "content": "I have been using Velocity Runner Robot and my experience has been very good. The robot is working smoothly and I have achieved good profits with proper risk management. The support team is helpful 👍"
+  },
+  {
+    "id": "rev-3",
+    "name": "Maximilian Becker",
+    "initial": "M",
+    "rating": 5,
+    "role": "Prop Firm Funded Trader",
+    "accountType": "FTMO $100k Account",
+    "date": "1 week ago",
+    "content": "Passed my FTMO Phase 1 and Phase 2 in under 18 trading days using the Conservative preset on investmentsview.de. Maximum drawdown never exceeded 3.2%. Truly institutional grade engineering."
+  },
+  {
+    "id": "rev-4",
+    "name": "Lukas Weber",
+    "initial": "L",
+    "rating": 5,
+    "role": "Automated Algo Trader",
+    "accountType": "VPS VPS-Frankfurt Dedicated",
+    "date": "2 weeks ago",
+    "content": "The dual pending-order feature on XAUUSD is a game changer. When the market broke out on US CPI news, it caught the exact move while shielding the balance with dynamic trailing. Highly recommended!"
+  },
+  {
+    "id": "rev-5",
+    "name": "Sophia Laurent",
+    "initial": "S",
+    "rating": 5,
+    "role": "Forex Swing & Scalp Trader",
+    "accountType": "Exness Pro MT4",
+    "date": "3 weeks ago",
+    "content": "Setup took less than 5 minutes following their MT5 video tutorial. The preset files for EURUSD and XAUUSD are plug-and-play. Consistent +38% return this month with safe drawdown."
+  }
+]

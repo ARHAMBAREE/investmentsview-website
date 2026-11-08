@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgTut" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f" />
+      <stop offset="50%" stop-color="#12131a" />
+      <stop offset="100%" stop-color="#050608" />
+    </linearGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff1c4" />
+      <stop offset="50%" stop-color="#e2ab5b" />
+      <stop offset="100%" stop-color="#b6823c" />
+    </linearGradient>
+    <linearGradient id="redPlay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff3333" />
+      <stop offset="100%" stop-color="#cc0000" />
+    </linearGradient>
+    <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="675" fill="url(#bgTut)"/>
+
+  <!-- Glowing radial circles in background -->
+  <circle cx="280" cy="340" r="220" fill="rgba(200,150,88,0.12)" filter="url(#glowGold)"/>
+  <circle cx="950" cy="300" r="250" fill="rgba(34,197,94,0.08)" filter="url(#glowGold)"/>
+
+  <!-- Left: Mini 3D Box representation -->
+  <g transform="translate(110, 110) scale(0.95)">
+    <!-- Box Shadow -->
+    <ellipse cx="140" cy="460" rx="120" ry="16" fill="rgba(0,0,0,0.7)"/>
+    <!-- Box Spine -->
+    <polygon points="40,80 80,60 80,420 40,400" fill="#08080c" stroke="#c89658" stroke-width="1.5"/>
+    <text transform="translate(62,280) rotate(-90)" font-family="sans-serif" font-weight="900" font-size="12" fill="#c89658" letter-spacing="3">VELOCITY RUNNER EA</text>
+    <!-- Box Face -->
+    <polygon points="80,60 260,40 260,380 80,420" fill="#13141a" stroke="url(#goldText)" stroke-width="2"/>
+    <!-- Golden Shield on Box -->
+    <path d="M170 140 L205 158 L205 200 C205 224 170 242 170 242 C170 242 135 224 135 200 L135 158 Z" fill="#0c0d12" stroke="#c89658" stroke-width="2"/>
+    <polygon points="170,170 180,192 160,192" fill="#22c55e"/>
+    <text x="170" y="275" font-family="sans-serif" font-weight="900" font-size="16" fill="#ffffff" text-anchor="middle">VELOCITY</text>
+    <text x="170" y="295" font-family="sans-serif" font-weight="900" font-size="14" fill="#e2ab5b" text-anchor="middle">RUNNER EA</text>
+    <text x="170" y="325" font-family="sans-serif" font-weight="700" font-size="10" fill="#22c55e" text-anchor="middle">investmentsview.de</text>
+  </g>
+
+  <!-- Right: MetaTrader 5 Terminal Screen Mockup -->
+  <g transform="translate(560, 90)">
+    <!-- Window Frame -->
+    <rect x="0" y="0" width="560" height="380" rx="10" fill="#0d1117" stroke="#2d3748" stroke-width="2"/>
+    <!-- Title Bar -->
+    <rect x="0" y="0" width="560" height="32" rx="10" fill="#161b22"/>
+    <circle cx="20" cy="16" r="5" fill="#ef4444"/>
+    <circle cx="36" cy="16" r="5" fill="#f59e0b"/>
+    <circle cx="52" cy="16" r="5" fill="#10b981"/>
+    <text x="80" y="21" font-family="sans-serif" font-weight="600" font-size="12" fill="#94a3b8">MetaTrader 5 - [XAUUSD, M15 - Velocity Runner v4.5 ACTIVE]</text>
+
+    <!-- Candlestick Chart Area -->
+    <g transform="translate(20, 50)">
+      <!-- Grid -->
+      <line x1="0" y1="50" x2="520" y2="50" stroke="#1f2937" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="0" y1="120" x2="520" y2="120" stroke="#1f2937" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="0" y1="190" x2="520" y2="190" stroke="#1f2937" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="0" y1="260" x2="520" y2="260" stroke="#1f2937" stroke-width="1" stroke-dasharray="4,4"/>
+
+      <!-- Candlesticks mockup -->
+      <!-- Candle 1 -->
+      <line x1="40" y1="180" x2="40" y2="250" stroke="#ef4444" stroke-width="2"/>
+      <rect x="35" y="195" width="10" height="40" fill="#ef4444"/>
+      <!-- Candle 2 (Green) -->
+      <line x1="80" y1="170" x2="80" y2="240" stroke="#22c55e" stroke-width="2"/>
+      <rect x="75" y="180" width="10" height="45" fill="#22c55e"/>
+      <!-- Candle 3 (Green) -->
+      <line x1="120" y1="140" x2="120" y2="210" stroke="#22c55e" stroke-width="2"/>
+      <rect x="115" y="150" width="10" height="50" fill="#22c55e"/>
+      <!-- Candle 4 (Green) -->
+      <line x1="160" y1="110" x2="160" y2="180" stroke="#22c55e" stroke-width="2"/>
+      <rect x="155" y="120" width="10" height="50" fill="#22c55e"/>
+      <!-- Candle 5 (Bullish Breakout) -->
+      <line x1="200" y1="60" x2="200" y2="160" stroke="#22c55e" stroke-width="3"/>
+      <rect x="194" y="75" width="12" height="75" fill="#22c55e"/>
+
+      <!-- EA Trade Entry Order Line (Gold Dash) -->
+      <line x1="160" y1="110" x2="520" y2="110" stroke="#e2ab5b" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="220" y="98" width="140" height="22" rx="4" fill="#e2ab5b"/>
+      <text x="290" y="113" font-family="sans-serif" font-weight="800" font-size="11" fill="#000000" text-anchor="middle">BUY 1.00 @ 2,645.20</text>
+
+      <!-- Take Profit Line (Green Dash) -->
+      <line x1="200" y1="65" x2="520" y2="65" stroke="#22c55e" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="375" y="54" width="125" height="22" rx="4" fill="#15803d"/>
+      <text x="437" y="69" font-family="sans-serif" font-weight="800" font-size="11" fill="#ffffff" text-anchor="middle">TP: +$1,420.00 HIT</text>
+
+      <!-- Bot HUD overlay in top left of MT5 -->
+      <rect x="10" y="10" width="230" height="90" rx="6" fill="rgba(10,12,18,0.88)" stroke="#c89658" stroke-width="1"/>
+      <text x="20" y="30" font-family="sans-serif" font-weight="800" font-size="12" fill="#e2ab5b">VELOCITY RUNNER EA v4.5</text>
+      <text x="20" y="50" font-family="sans-serif" font-weight="700" font-size="11" fill="#22c55e">● Status: RUNNING &amp; PROTECTED</text>
+      <text x="20" y="68" font-family="sans-serif" font-weight="500" font-size="10" fill="#94a3b8">Drawdown Protection: Active (1.8%)</text>
+      <text x="20" y="85" font-family="sans-serif" font-weight="500" font-size="10" fill="#94a3b8">Daily Profit: +$420.50 (+4.2%)</text>
+    </g>
+  </g>
+
+  <!-- Big Center Overlays matching Tradivo Screenshot 5 -->
+  <!-- Top Center Headline -->
+  <g transform="translate(600, 52)">
+    <rect x="-310" y="-18" width="620" height="36" rx="6" fill="rgba(0,0,0,0.8)" stroke="#333" stroke-width="1"/>
+    <text x="0" y="6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="15" fill="#ffffff" text-anchor="middle" letter-spacing="1">VELOCITY RUNNER EA | COMPLETE MT5 SETUP TUTORIAL (STEP-BY-STEP)</text>
+  </g>
+
+  <!-- Big YouTube Red Play Button in Center -->
+  <g transform="translate(600, 275)" cursor="pointer" id="centerPlayButton">
+    <ellipse cx="0" cy="0" r="54" fill="rgba(0,0,0,0.6)" filter="url(#glowGold)"/>
+    <rect x="-48" y="-34" width="96" height="68" rx="20" fill="url(#redPlay)" stroke="#ffffff" stroke-width="2"/>
+    <polygon points="-12,-18 20,0 -12,18" fill="#ffffff"/>
+  </g>
+
+  <!-- Yellow / Gold Badges: "EA SETUP TUTORIAL" -->
+  <g transform="translate(600, 195)">
+    <text x="0" y="0" font-family="Impact, sans-serif" font-size="44" fill="#ffffff" text-anchor="middle" stroke="#000000" stroke-width="2" letter-spacing="2">EA SETUP</text>
+    <text x="0" y="44" font-family="Impact, sans-serif" font-size="52" fill="#ffd700" text-anchor="middle" stroke="#000000" stroke-width="2" letter-spacing="3">TUTORIAL</text>
+    <rect x="-85" y="55" width="170" height="26" rx="5" fill="#e2ab5b"/>
+    <text x="0" y="73" font-family="sans-serif" font-weight="900" font-size="13" fill="#000000" text-anchor="middle" letter-spacing="1">STEP BY STEP</text>
+  </g>
+
+  <!-- "Easy Setup" Badge in Yellow Ribbon -->
+  <g transform="translate(1030, 95) rotate(10)">
+    <rect x="-60" y="-18" width="120" height="36" rx="18" fill="#facc15" stroke="#000000" stroke-width="2"/>
+    <text x="0" y="6" font-family="sans-serif" font-weight="900" font-size="14" fill="#000000" text-anchor="middle">✔ Easy Setup</text>
+  </g>
+
+  <!-- Bottom 5-Step Tutorial Process Bar matching Tradivo Screenshot 5 -->
+  <g transform="translate(100, 520)">
+    <!-- Container background -->
+    <rect x="0" y="0" width="1000" height="110" rx="14" fill="rgba(15, 17, 24, 0.95)" stroke="#c89658" stroke-width="1.5"/>
+
+    <!-- Step 1 -->
+    <g transform="translate(30, 20)">
+      <rect x="0" y="0" width="170" height="70" rx="8" fill="#1b1e2a" stroke="#2d3748" stroke-width="1"/>
+      <text x="85" y="32" font-family="sans-serif" font-weight="800" font-size="20" fill="#c89658" text-anchor="middle">⬇ 1</text>
+      <text x="85" y="52" font-family="sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle">DOWNLOAD MT5</text>
+    </g>
+
+    <!-- Step 2 -->
+    <g transform="translate(225, 20)">
+      <rect x="0" y="0" width="170" height="70" rx="8" fill="#1b1e2a" stroke="#2d3748" stroke-width="1"/>
+      <text x="85" y="32" font-family="sans-serif" font-weight="800" font-size="20" fill="#22c55e" text-anchor="middle">📊 2</text>
+      <text x="85" y="52" font-family="sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle">ATTACH TO CHART</text>
+    </g>
+
+    <!-- Step 3 -->
+    <g transform="translate(420, 20)">
+      <rect x="0" y="0" width="170" height="70" rx="8" fill="#1b1e2a" stroke="#2d3748" stroke-width="1"/>
+      <text x="85" y="32" font-family="sans-serif" font-weight="800" font-size="20" fill="#f59e0b" text-anchor="middle">🔑 3</text>
+      <text x="85" y="52" font-family="sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle">ENTER LICENSE KEY</text>
+    </g>
+
+    <!-- Step 4 -->
+    <g transform="translate(615, 20)">
+      <rect x="0" y="0" width="170" height="70" rx="8" fill="#1b1e2a" stroke="#2d3748" stroke-width="1"/>
+      <text x="85" y="32" font-family="sans-serif" font-weight="800" font-size="20" fill="#38bdf8" text-anchor="middle">⚙ 4</text>
+      <text x="85" y="52" font-family="sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle">LOAD PRESET FILE</text>
+    </g>
+
+    <!-- Step 5 (Start Now) -->
+    <g transform="translate(810, 20)">
+      <rect x="0" y="0" width="160" height="70" rx="8" fill="#15803d" stroke="#22c55e" stroke-width="1.5"/>
+      <text x="80" y="32" font-family="sans-serif" font-weight="800" font-size="18" fill="#ffffff" text-anchor="middle">🚀 START</text>
+      <text x="80" y="52" font-family="sans-serif" font-weight="800" font-size="11" fill="#ffffff" text-anchor="middle">AUTO TRADING</text>
+    </g>
+  </g>
+</svg>
