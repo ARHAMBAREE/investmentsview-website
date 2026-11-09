@@ -1822,39 +1822,38 @@
                 </div>
               </div>
 
-              <!-- Payment Pane 1: Credit / Debit Card -->
+              <!-- Payment Pane 1: Credit / Debit Card (Stripe Gateway) -->
               <div id="pane-card" class="pay-pane active">
-                <!-- Interactive 3D Card Mockup -->
                 <div class="card-visual-mockup">
                   <div class="card-mockup-top">
                     <div class="card-chip"></div>
-                    <div style="font-size: 14px; font-weight: 800; color: #cbd5e1; font-family: monospace;">VISA / MASTERCARD</div>
+                    <div style="font-size: 13px; font-weight: 800; color: #cbd5e1; font-family: monospace;">STRIPE SECURE CARD GATEWAY</div>
                   </div>
                   <div id="card-mock-number" class="card-number-display">•••• •••• •••• 4242</div>
                   <div class="card-mockup-bottom">
                     <div>
-                      <div style="font-size: 9px; text-transform: uppercase;">Cardholder</div>
-                      <div id="card-mock-holder" class="holder">ALEX MORGAN</div>
+                      <div style="font-size: 9px; text-transform: uppercase;">Accepted Networks</div>
+                      <div id="card-mock-holder" class="holder">VISA &bull; MASTERCARD &bull; AMEX &bull; APPLE PAY</div>
                     </div>
                     <div>
-                      <div style="font-size: 9px; text-transform: uppercase;">Expires</div>
-                      <div id="card-mock-expiry" class="holder">12/28</div>
+                      <div style="font-size: 9px; text-transform: uppercase;">Security</div>
+                      <div id="card-mock-expiry" class="holder">3D SECURE 2</div>
                     </div>
                   </div>
                 </div>
 
-                <div class="card-inputs-row">
-                  <div>
-                    <label class="input-label-sleek" style="font-size: 10px;">Card Number</label>
-                    <input type="text" id="input-card-number" class="input-sleek" placeholder="4242 •••• •••• 4242" maxlength="19">
+                <div class="stripe-trust-banner" style="background: rgba(18, 22, 40, 0.85); border: 1px solid rgba(212, 168, 92, 0.25); border-radius: 8px; padding: 14px 16px; margin-top: 14px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="#635bff"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/></svg>
+                      <strong style="color: #ffffff; font-size: 13.5px;">Stripe 256-Bit SSL Checkout</strong>
+                    </div>
+                    <span style="font-size: 10.5px; font-weight: 700; color: #22c55e; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); border-radius: 4px; padding: 2px 7px;">
+                      ● Verified Merchant
+                    </span>
                   </div>
-                  <div>
-                    <label class="input-label-sleek" style="font-size: 10px;">MM / YY</label>
-                    <input type="text" id="input-card-expiry" class="input-sleek" placeholder="12/28" maxlength="5">
-                  </div>
-                  <div>
-                    <label class="input-label-sleek" style="font-size: 10px;">CVC / CVV</label>
-                    <input type="password" id="input-card-cvc" class="input-sleek" placeholder="•••" maxlength="4">
+                  <div style="font-size: 12px; color: #94a3b8; line-height: 1.5;">
+                    Click below to proceed to Stripe's encrypted payment portal. Supports <strong>Visa, Mastercard, American Express, Apple Pay, and Google Pay</strong>. Your MT4/MT5 license key and preset configurations are dispatched instantly upon successful payment.
                   </div>
                 </div>
               </div>

@@ -1120,6 +1120,20 @@ function initCheckoutController() {
   // Payment Tabs (Card, Crypto, SEPA)
   const payTabs = document.querySelectorAll('.pay-tab-btn');
   const payPanes = document.querySelectorAll('.pay-pane');
+  const submitBtnMain = document.getElementById('btn-submit-checkout-main');
+
+  function updateSubmitBtnLabel(tabType) {
+    if (!submitBtnMain) return;
+    const finalAmount = Math.max(0, checkoutCurrentAmount - appliedVoucherDiscount);
+    const amountStr = `$${finalAmount.toFixed(2)}`;
+    if (tabType === 'card') {
+      submitBtnMain.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Pay ${amountStr} via Stripe &amp; Activate License</span>`;
+    } else if (tabType === 'crypto') {
+      submitBtnMain.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.93V18h-2v-1.07c-2.3-.23-4-1.28-4-3.43h2.5c0 1.13.9 1.75 2.5 1.75 1.48 0 2.5-.66 2.5-1.65 0-.9-.72-1.4-2.52-1.78l-1.3-.28C8.5 11.08 7 9.8 7 7.75c0-1.95 1.5-3.08 3.5-3.35V3h2v1.4c2.05.27 3.5 1.4 3.5 3.1h-2.5c0-.98-.75-1.5-2-1.5-1.3 0-2 .6-2 1.4 0 .78.6 1.25 2.1 1.57l1.3.28c2.4.52 3.6 1.7 3.6 3.8 0 2.1-1.6 3.23-3.5 3.43z"/></svg><span>Confirm ${amountStr} Crypto Payment &amp; Activate</span>`;
+    } else if (tabType === 'sepa') {
+      submitBtnMain.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4v10h16V8H4zm2 2h4v2H6v-2z"/></svg><span>Lock SEPA Bank Transfer &amp; Issue License</span>`;
+    }
+  }
 
   payTabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -1130,6 +1144,7 @@ function initCheckoutController() {
       const targetPane = document.getElementById(`pane-${tab.dataset.tab}`);
       if (targetPane) targetPane.classList.add('active');
 
+      updateSubmitBtnLabel(tab.dataset.tab);
       playTactileTone(720, 0.03, 'sine');
     });
   });
@@ -1256,9 +1271,9 @@ function initCheckoutController() {
       e.preventDefault();
       const submitBtn = document.getElementById('btn-submit-checkout-main');
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Securing Order &amp; Generating License...</span>`;
 
       const activePayTab = document.querySelector('.pay-tab-btn.active');
+      const isCardPayment = activePayTab ? activePayTab.dataset.tab === 'card' : true;
       const paymentMethodName = activePayTab ? activePayTab.querySelector('span').textContent : 'Credit Card';
       const curPlan = planInput ? planInput.value : 'Velocity Runner EA - 1 Month ($200)';
       const isGdas = curPlan.toLowerCase().includes('gdas');
@@ -1270,9 +1285,37 @@ function initCheckoutController() {
         email: document.getElementById('checkout-email').value,
         broker: document.getElementById('checkout-broker').value || 'Raw Spread ECN',
         platform: platformValInput ? platformValInput.value : 'MetaTrader 5 (MT5)',
-        paymentMethod: paymentMethodName
+        paymentMethod: paymentMethodName,
+        amount: checkoutCurrentAmount,
+        voucherDiscount: appliedVoucherDiscount
       };
 
+      // If Card payment: route directly to Stripe Checkout
+      if (isCardPayment) {
+        submitBtn.innerHTML = `<span>Connecting to 256-Bit Stripe Terminal...</span>`;
+        try {
+          const stripeRes = await fetch('/api/stripe/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const stripeData = await stripeRes.json();
+          if (stripeRes.ok && stripeData.url) {
+            playTactileTone(1050, 0.12, 'sine');
+            showToast('Redirecting to Stripe 256-Bit SSL Checkout...');
+            window.location.href = stripeData.url;
+            return;
+          } else {
+            console.warn('Stripe checkout session response:', stripeData);
+            showToast(stripeData.error || 'Stripe initialization in progress. Completing order...');
+          }
+        } catch (err) {
+          console.warn('Stripe direct session redirect error:', err);
+        }
+      }
+
+      // Fallback or Crypto / SEPA Direct Processing
+      submitBtn.innerHTML = `<span>Securing Order &amp; Generating License...</span>`;
       try {
         const res = await fetch('/api/checkout', {
           method: 'POST',
@@ -1346,6 +1389,89 @@ function initCheckoutController() {
         submitBtn.innerHTML = `<span>Complete Order</span>`;
       }
     };
+  }
+
+  // Handle Stripe Success Callback (?session_id=...&success=true)
+  const urlParams = new URLSearchParams(window.location.search);
+  const stripeSessionId = urlParams.get('session_id');
+  const isStripeSuccess = urlParams.get('success') === 'true';
+
+  if (stripeSessionId && isStripeSuccess) {
+    const containerToReplace = document.querySelector('.checkout-split-grid') || (checkoutModal ? checkoutModal.querySelector('.modal-box') : null);
+    if (containerToReplace) {
+      if (checkoutModal) checkoutModal.classList.add('active');
+      containerToReplace.innerHTML = `
+        <div class="checkout-success-view" style="width: 100%; grid-column: 1 / -1; padding: 40px 24px; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 12px; animation: pulse 1.5s infinite;">⏳</div>
+          <h2 style="font-size: 22px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">
+            Verifying 256-Bit Stripe Payment...
+          </h2>
+          <p style="color: #94a3b8; font-size: 14px;">
+            Please hold while your institutional license key is generated.
+          </p>
+        </div>
+      `;
+
+      fetch(`/api/stripe/verify-session?session_id=${encodeURIComponent(stripeSessionId)}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.success && data.paid) {
+            playTactileTone(1050, 0.2, 'triangle');
+            containerToReplace.innerHTML = `
+              <div class="checkout-success-view" style="width: 100%; grid-column: 1 / -1; padding: 40px 24px; text-align: center;">
+                <div class="success-check-badge">✓</div>
+                <div style="display: inline-block; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #22c55e; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;">
+                  💳 Stripe Verified Payment &bull; $${data.amountTotal} ${data.currency}
+                </div>
+                <h2 style="font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">
+                  ${data.bot || 'Velocity Runner EA'} License Activated!
+                </h2>
+                <p style="color: #94a3b8; font-size: 14px; max-width: 580px; margin: 0 auto 24px auto;">
+                  Your institutional license key has been bound to <strong>${data.email}</strong>. Download your pre-optimized presets below.
+                </p>
+
+                <!-- Golden License Box -->
+                <div style="background: #090a0f; border: 1px dashed #c89658; border-radius: 12px; padding: 22px; max-width: 540px; margin: 0 auto 24px auto; text-align: left;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Official MetaTrader Activation Key</span>
+                    <button id="btn-copy-license-key" style="background: rgba(200,150,88,0.2); border: 1px solid #c89658; color: #c89658; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; cursor: pointer;">Copy License</button>
+                  </div>
+                  <div style="font-size: 22px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: #c89658; letter-spacing: 2px;">
+                    ${data.licenseKey}
+                  </div>
+                  <div style="font-size: 11px; color: #64748b; margin-top: 6px;">Order Ref: <code>${data.orderId}</code> &bull; Platform: ${data.platform}</div>
+                </div>
+
+                <!-- Instant Downloads Actions -->
+                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px;">
+                  <a href="${data.downloadUrl}" class="btn-primary-gold" style="padding: 14px 28px; font-size: 14px;">
+                    ⬇ Download Verified Preset (.set) Bundle
+                  </a>
+                  <a href="https://t.me/investmentsview_support" target="_blank" class="btn-secondary-dark" style="padding: 14px 24px; font-size: 14px;">
+                    💬 VIP Telegram Onboarding Desk
+                  </a>
+                </div>
+
+                <div style="font-size: 11.5px; color: #64748b; line-height: 1.6;">
+                  A confirmation email with your license certificate and installation parameters has been sent to <strong>${data.email}</strong>.
+                </div>
+              </div>
+            `;
+            const copyBtn = document.getElementById('btn-copy-license-key');
+            if (copyBtn) {
+              copyBtn.onclick = () => {
+                navigator.clipboard.writeText(data.licenseKey);
+                copyBtn.textContent = 'Copied!';
+                showToast('License key copied to clipboard!');
+                setTimeout(() => { copyBtn.textContent = 'Copy License'; }, 2000);
+              };
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Verify session error:', err);
+        });
+    }
   }
 }
 

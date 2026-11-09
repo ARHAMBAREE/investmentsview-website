@@ -1,11 +1,18 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const compression = require('compression');
+const Stripe = require('stripe');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Initialize Stripe with Secret Key from environment
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
+const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY || 'pk_live_51UZpWXQ1a3JIldbxqXUxBADnJhyk9fxH8wBOlTijmICbObavqtNafQwFlNHdHbq2NmWDIu97w43c1Y1LXXhPHq0R00yWfRtlZ5';
 
 // Production Middleware
 app.use(compression());
@@ -187,6 +194,138 @@ app.get('/api/stats/myfxbook', (req, res) => {
       ]}
     ]
   });
+});
+
+// API: Public Configuration
+app.get('/api/config', (req, res) => {
+  res.json({
+    stripePublishableKey,
+    stripeConfigured: !!stripe
+  });
+});
+
+// Helper to determine price in cents from plan string or explicit price
+function parsePriceInCents(planStr, explicitAmount) {
+  if (explicitAmount && !isNaN(explicitAmount) && Number(explicitAmount) > 0) {
+    return Math.round(Number(explicitAmount) * 100);
+  }
+  const clean = (planStr || '').replace(/,/g, '');
+  const match = clean.match(/\$([0-9]+)/);
+  if (match) {
+    return parseInt(match[1], 10) * 100;
+  }
+  return 20000; // default $200.00
+}
+
+// API: Create Stripe Checkout Session for Credit Card Payments
+app.post('/api/stripe/create-checkout-session', async (req, res) => {
+  if (!stripe) {
+    return res.status(503).json({ 
+      error: 'Stripe payments are currently being initialized. Please select SEPA or Crypto or try again shortly.' 
+    });
+  }
+
+  const { plan, name, email, platform, broker, bot, amount, voucherDiscount } = req.body;
+  if (!plan || !email) {
+    return res.status(400).json({ error: 'Plan and email address are required.' });
+  }
+
+  try {
+    const rawAmount = parsePriceInCents(plan, amount);
+    const discountCents = voucherDiscount && !isNaN(voucherDiscount) ? Math.round(Number(voucherDiscount) * 100) : 0;
+    const finalAmount = Math.max(1000, rawAmount - discountCents); // minimum $10
+
+    const isGdas = (plan || '').toLowerCase().includes('gdas') || (bot || '').toLowerCase().includes('gdas');
+    const botTitle = isGdas ? 'GDAS EA' : 'Velocity Runner EA';
+    const origin = req.headers.origin || `${req.protocol}://${req.get('host')}` || 'https://investmentsview.de';
+
+    const session = await stripe.checkout.sessions.create({
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: `${botTitle} - ${plan}`,
+            description: `Official MT4/MT5 Trading License & Verified Preset Configurations for ${email}`,
+            images: [`${origin}/assets/box-3d.png`]
+          },
+          unit_amount: finalAmount,
+        },
+        quantity: 1,
+      }],
+      mode: 'payment',
+      customer_email: email.trim(),
+      client_reference_id: `CLI-${Date.now().toString(36).toUpperCase()}`,
+      metadata: {
+        plan,
+        bot: isGdas ? 'gdas' : 'velocity',
+        botTitle,
+        name: (name || 'Valued Trader').trim(),
+        email: email.trim(),
+        platform: platform || 'MetaTrader 5 (MT5)',
+        broker: broker || 'Standard ECN'
+      },
+      success_url: `${origin}/checkout.html?session_id={CHECKOUT_SESSION_ID}&success=true`,
+      cancel_url: `${origin}/checkout.html?canceled=true`
+    });
+
+    res.json({
+      success: true,
+      url: session.url,
+      sessionId: session.id
+    });
+  } catch (err) {
+    console.error('Stripe Checkout Session Error:', err);
+    res.status(500).json({ error: err.message || 'Unable to create Stripe checkout session.' });
+  }
+});
+
+// API: Verify Stripe Payment Session and Dispatch License
+app.get('/api/stripe/verify-session', async (req, res) => {
+  const { session_id } = req.query;
+  if (!session_id) {
+    return res.status(400).json({ error: 'Session ID is required.' });
+  }
+  if (!stripe) {
+    return res.status(503).json({ error: 'Stripe is not configured on the server.' });
+  }
+
+  try {
+    const session = await stripe.checkout.sessions.retrieve(session_id);
+    if (session.payment_status === 'paid') {
+      const meta = session.metadata || {};
+      const isGdas = (meta.bot || '').toLowerCase().includes('gdas') || (meta.plan || '').toLowerCase().includes('gdas');
+      const prefix = isGdas ? 'GDAS' : 'VRUNNER';
+      const randomHex = () => Math.random().toString(16).substring(2, 6).toUpperCase();
+      const licenseKey = `${prefix}-${randomHex()}-${randomHex()}-${randomHex()}`;
+      const orderId = `STRIPE-${session.id.slice(-8).toUpperCase()}`;
+
+      return res.json({
+        success: true,
+        paid: true,
+        orderId,
+        licenseKey,
+        plan: meta.plan || 'Velocity Runner EA Pro',
+        bot: isGdas ? 'GDAS EA' : 'Velocity Runner EA',
+        platform: meta.platform || 'MetaTrader 5 (MT5)',
+        broker: meta.broker || 'Standard ECN',
+        accountHolder: meta.name || session.customer_details?.name || 'Valued Trader',
+        email: session.customer_details?.email || meta.email || '',
+        downloadUrl: `/api/download/preset?bot=${isGdas ? 'gdas' : 'velocity'}&plan=${encodeURIComponent(meta.plan || 'pro')}&platform=${encodeURIComponent(meta.platform || 'MT5')}`,
+        amountTotal: (session.amount_total / 100).toFixed(2),
+        currency: (session.currency || 'usd').toUpperCase()
+      });
+    } else {
+      return res.json({
+        success: false,
+        paid: false,
+        status: session.payment_status,
+        message: 'Payment is pending verification.'
+      });
+    }
+  } catch (err) {
+    console.error('Verify session error:', err);
+    return res.status(500).json({ error: 'Could not verify payment session.' });
+  }
 });
 
 // API: Production Checkout & Automated License Generator
