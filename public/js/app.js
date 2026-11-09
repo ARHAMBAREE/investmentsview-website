@@ -1353,12 +1353,15 @@ function initCheckoutController() {
                 </div>
 
                 <!-- Instant Downloads Actions -->
-                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px;">
-                  <a href="${data.downloadUrl}" class="btn-primary-gold" style="padding: 14px 28px; font-size: 14px;">
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+                  <a href="${data.downloadUrl}" class="btn-primary-gold" style="padding: 13px 24px; font-size: 13.5px;">
                     ⬇ Download Verified Preset (.set) Bundle
                   </a>
-                  <a href="https://t.me/investmentsview_support" target="_blank" class="btn-secondary-dark" style="padding: 14px 24px; font-size: 14px;">
-                    💬 VIP Telegram Onboarding Desk
+                  <a href="https://wa.me/4915630033734?text=Hello%20Investmentsview%2C%20I%20just%20purchased%20license%20${encodeURIComponent(data.licenseKey)}%20and%20would%20like%20VIP%20onboarding%20assistance" target="_blank" style="padding: 13px 20px; font-size: 13.5px; background: #25D366; color: #ffffff; font-weight: 700; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                    💬 WhatsApp Support (+49 1563 0033734)
+                  </a>
+                  <a href="https://t.me/+4915630033734" target="_blank" style="padding: 13px 20px; font-size: 13.5px; background: #229ED9; color: #ffffff; font-weight: 700; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                    ✈ Telegram Desk (+49 1563 0033734)
                   </a>
                 </div>
 
@@ -1443,12 +1446,15 @@ function initCheckoutController() {
                 </div>
 
                 <!-- Instant Downloads Actions -->
-                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px;">
-                  <a href="${data.downloadUrl}" class="btn-primary-gold" style="padding: 14px 28px; font-size: 14px;">
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+                  <a href="${data.downloadUrl}" class="btn-primary-gold" style="padding: 13px 24px; font-size: 13.5px;">
                     ⬇ Download Verified Preset (.set) Bundle
                   </a>
-                  <a href="https://t.me/investmentsview_support" target="_blank" class="btn-secondary-dark" style="padding: 14px 24px; font-size: 14px;">
-                    💬 VIP Telegram Onboarding Desk
+                  <a href="https://wa.me/4915630033734?text=Hello%20Investmentsview%2C%20I%20just%20purchased%20license%20${encodeURIComponent(data.licenseKey)}%20and%20would%20like%20VIP%20onboarding%20assistance" target="_blank" style="padding: 13px 20px; font-size: 13.5px; background: #25D366; color: #ffffff; font-weight: 700; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                    💬 WhatsApp Support (+49 1563 0033734)
+                  </a>
+                  <a href="https://t.me/+4915630033734" target="_blank" style="padding: 13px 20px; font-size: 13.5px; background: #229ED9; color: #ffffff; font-weight: 700; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                    ✈ Telegram Desk (+49 1563 0033734)
                   </a>
                 </div>
 
@@ -1637,8 +1643,10 @@ function initVipDesk() {
           showToast('Velocity Runner passes FTMO with max 3.2% DD. Full set file provided!');
         } else if (question === 'min') {
           showToast('Minimum balance is $500 on Standard or $50 on Cent accounts.');
+        } else if (question === 'whatsapp') {
+          window.open('https://wa.me/4915630033734?text=Hello%20Investmentsview%2C%20I%20have%20a%20question%20about%20your%20Trading%20EA', '_blank');
         } else if (question === 'telegram') {
-          window.open('https://t.me/investmentsview_support', '_blank');
+          window.open('https://t.me/+4915630033734', '_blank');
         }
       });
     });

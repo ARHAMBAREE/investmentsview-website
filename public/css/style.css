@@ -2347,7 +2347,120 @@ body {
   font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.7;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+}
+
+/* Direct Instant Contact Channels (WhatsApp & Telegram) */
+.direct-contact-channels {
+  background: linear-gradient(135deg, rgba(200, 150, 88, 0.08), rgba(15, 17, 24, 0.85));
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.direct-contact-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+  margin-bottom: 14px;
+}
+
+.direct-contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-channel-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  background: rgba(10, 12, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-channel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.btn-channel-whatsapp {
+  border-color: rgba(37, 211, 102, 0.3);
+}
+.btn-channel-whatsapp:hover {
+  border-color: #25D366;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.15), rgba(10, 12, 18, 0.95));
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25);
+}
+
+.btn-channel-telegram {
+  border-color: rgba(34, 158, 217, 0.3);
+}
+.btn-channel-telegram:hover {
+  border-color: #229ED9;
+  background: linear-gradient(135deg, rgba(34, 158, 217, 0.15), rgba(10, 12, 18, 0.95));
+  box-shadow: 0 8px 25px rgba(34, 158, 217, 0.25);
+}
+
+.channel-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wa-icon-wrap {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+}
+.tg-icon-wrap {
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  box-shadow: 0 4px 12px rgba(34, 158, 217, 0.35);
+}
+
+.channel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.channel-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.channel-sub {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+}
+
+.channel-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+.wa-badge {
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+.tg-badge {
+  background: rgba(34, 158, 217, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(34, 158, 217, 0.3);
 }
 
 .support-perks-list {
@@ -2493,18 +2606,70 @@ body {
   z-index: 90;
 }
 
+/* Floating Quick Actions Dock */
+.floating-dock-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.floating-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 15px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.btn-wa-quick {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+.btn-wa-quick:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+  color: #ffffff;
+}
+
+.btn-tg-quick {
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  border: 1px solid rgba(42, 171, 238, 0.4);
+}
+.btn-tg-quick:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(34, 158, 217, 0.5);
+  color: #ffffff;
+}
+
+.vip-online-pulse {
+  color: #22c55e;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
 .vip-chat-trigger-btn {
   background: linear-gradient(135deg, #181a24, #0f1017);
   border: 1px solid var(--border-gold);
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 11px 18px;
   border-radius: var(--radius-full);
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(200, 150, 88, 0.2);
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 13px;
   font-weight: 700;
   transition: all var(--transition-normal);
 }
@@ -2523,8 +2688,8 @@ body {
   background: #11131a;
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+  padding: 22px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
   display: none;
   animation: fadeIn 0.3s ease;
 }
@@ -2542,13 +2707,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 12px;
+  padding-bottom: 10px;
 }
 
 .vip-drawer-title {
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 800;
   color: #ffffff;
 }
@@ -2557,15 +2722,96 @@ body {
   background: none;
   border: none;
   color: #94a3b8;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
+  line-height: 1;
+}
+.vip-drawer-close:hover {
+  color: #ffffff;
+}
+
+/* VIP Drawer Hotline Badge */
+.vip-drawer-hotline-badge {
+  background: #090a0f;
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.hotline-badge-tag {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--accent-gold);
+  letter-spacing: 1px;
+}
+
+.hotline-phone-link {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 3px 0;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+.hotline-phone-link:hover {
+  color: var(--accent-gold);
+}
+
+.hotline-location {
+  display: block;
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+.vip-drawer-action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.btn-drawer-direct {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.btn-drawer-wa {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+.btn-drawer-wa:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-drawer-tg {
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  border: 1px solid rgba(42, 171, 238, 0.4);
+}
+.btn-drawer-tg:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 .vip-preset-chips {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .vip-chip-btn {
@@ -2618,6 +2864,57 @@ body {
   line-height: 1.6;
   margin: 16px 0;
   max-width: 320px;
+}
+
+/* Footer Hotline Pill */
+.footer-hotline-card {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  max-width: 320px;
+}
+
+.footer-hotline-title {
+  font-size: 12px;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-hotline-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all var(--transition-fast);
+}
+.footer-wa-link {
+  background: #25D366;
+}
+.footer-wa-link:hover {
+  opacity: 0.9;
+  color: #ffffff;
+}
+.footer-tg-link {
+  background: #229ED9;
+}
+.footer-tg-link:hover {
+  opacity: 0.9;
+  color: #ffffff;
 }
 
 .footer-heading {
@@ -3171,27 +3468,66 @@ body {
     padding: 6px 10px !important;
   }
 
+  /* Direct Contact Channels Mobile */
+  .direct-contact-channels {
+    padding: 16px 14px !important;
+  }
+  .contact-channel-btn {
+    padding: 10px 12px !important;
+    gap: 10px !important;
+  }
+  .channel-icon-wrap {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .channel-title {
+    font-size: 13.5px !important;
+  }
+  .channel-sub {
+    font-size: 10.5px !important;
+  }
+  .channel-badge {
+    display: none !important;
+  }
+
   /* Footer */
   .footer-top-grid {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
 
-  /* Floating VIP Chat */
+  /* Floating VIP Chat & Quick Actions Dock */
   .floating-vip-chat {
-    bottom: 14px !important;
-    right: 12px !important;
+    bottom: 12px !important;
+    right: 10px !important;
+  }
+
+  .floating-quick-btn {
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+  }
+
+  .floating-quick-label {
+    display: none !important;
+  }
+
+  .floating-dock-row {
+    gap: 6px !important;
   }
 
   .vip-chat-trigger-btn {
-    padding: 8px 14px !important;
-    font-size: 12px !important;
+    padding: 8px 12px !important;
+    font-size: 11.5px !important;
   }
 
   .vip-drawer {
-    width: calc(100vw - 24px) !important;
+    width: calc(100vw - 20px) !important;
     max-width: 320px !important;
     right: 0 !important;
+    padding: 18px 16px !important;
   }
 
   /* Checkout Modal */
@@ -3454,6 +3790,56 @@ body {
   display: block;
   margin-top: 4px;
   font-size: 11px;
+}
+
+/* Checkout Support Assistance Box */
+.checkout-support-assist-box {
+  background: rgba(18, 21, 32, 0.75);
+  border: 1px solid rgba(200, 150, 88, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.assist-badge {
+  font-size: 11.5px;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.assist-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.assist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all var(--transition-fast);
+}
+.assist-btn-wa {
+  background: #25D366;
+}
+.assist-btn-wa:hover {
+  opacity: 0.9;
+  color: #ffffff;
+}
+.assist-btn-tg {
+  background: #229ED9;
+}
+.assist-btn-tg:hover {
+  opacity: 0.9;
+  color: #ffffff;
 }
 
 /* Security Guarantee Badges */
